@@ -8,4 +8,6 @@ Folder templates chứa các file html
 
 Folder static chia ra thành css , images, js để chứa các file tương ứng
 
-* Để load các file css,js, images cần thêm vào đầu trang {% load static %} với mỗi đường dẫn dùng {% static 'Đường dẫn tới file css, js tương ứng' %}  vd:  {% static 'css/style.css' %}
+* Để load các file css, js, images cần thêm vào đầu trang  {% load static %}  với mỗi đường dẫn dùng  {% static 'Đường dẫn tới file css, js tương ứng' %}
+
+vd:  {% static 'css/style.css' %}
