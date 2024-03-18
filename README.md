@@ -4,6 +4,8 @@ Tải django bằng lệnh : pip3 install django==5.0.1
 
 Để chạy server ảo: "cd Academic_Management_System" -> chạy lệnh  "python3 manage.py runserver"  (chạy bằng terminal )
 
+Mấy ông làm trong phần main_app thôi nhé
+
 Folder templates chứa các file html 
 
 Folder static chia ra thành css , images, js để chứa các file tương ứng
