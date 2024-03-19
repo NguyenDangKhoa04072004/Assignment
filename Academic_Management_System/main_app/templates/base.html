@@ -1,0 +1,13 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block main%}
+   <h1> Hello world </h1>
+   <ul>
+      {% for item in List%}
+        {% if item < 5 %}
+       <li>{{item}}</li>
+       {% endif %}
+      {% endfor %}
+   </ul>
+
+{% endblock %}
