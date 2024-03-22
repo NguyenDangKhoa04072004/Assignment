@@ -1,11 +1,9 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
-def index(request):
-  return render(request,'index.html')
 def home(request):
-  list = [1,2,3,4,5,6,7]
-  return render(request,'base.html',{
-     'List': list
-     
-  })
+  return render(request,'home.html')
+def login(request):
+  return render(request,'login.html')
+def register(request):
+  return render(request,'register.html')
