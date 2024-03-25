@@ -41,7 +41,8 @@ html{
 body.dark{
     --light: #181a1e;
     --grey: #25252c;
-    --dark: #fbfbfb
+    --dark: #fbfbfb;
+     color: #fbfbfb;
 }
 
 body{
@@ -61,15 +62,31 @@ body{
     scrollbar-width: none;
     transition: all 0.3s ease;
 }
-
+.Rsidebar{
+    position: fixed;
+    top: 56px;
+    right: 0;
+    background: var(--light);
+    width: 260px;
+    height: 100%;
+    z-index: 2000;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    transition: all 0.3s ease;
+}
 .sidebar::-webkit-scrollbar{
+    display: none;
+}
+.Rsidebar::-webkit-scrollbar{
     display: none;
 }
 
 .sidebar.close{
     width: 60px;
 }
-
+.Rsidebar.close{
+    width: 0px;
+}
 .sidebar .logo{
     font-size: 24px;
     font-weight: 700;
@@ -81,7 +98,14 @@ body{
     padding-bottom: 20px;
     box-sizing: content-box;
 }
-
+.sidebar .logo img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 15px;
+}
 .sidebar .logo .logo-name span{
     color: var(--dark);
 }
@@ -180,7 +204,9 @@ body{
     width: calc(100% - 60px);
     left: 60px;
 }
-
+.Rsidebar.close .content nav{
+    transition: all 0.3 ease;
+}
 .content nav{
     height: 56px;
     background: var(--light);
@@ -192,6 +218,7 @@ body{
     top: 0;
     left: 0;
     z-index: 1000;
+    transition: all 0.3 ease;
 }
 
 .content nav::before{
