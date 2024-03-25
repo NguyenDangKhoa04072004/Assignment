@@ -1,12 +1,13 @@
 {% extends 'Manager/base.html'%}
 {% block menu %}
-<li><a href="{% url 'admin_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
-<li ><a href="{% url 'student_views' %}"><i class='bx bxs-graduation' ></i>Sinh viên</a></li>
-<li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
-<li><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
-<li><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
-<li class = "active"><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
-{% endblock %}
+    <li><a href="{% url 'admin_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
+    <li ><a href="{% url 'student_views' %}"><i class='bx bxs-graduation' ></i>Sinh viên</a></li>
+    <li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
+    <li><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
+    <li><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
+    <li  class = "active"><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
+{% endblock%}
+
 {% block main %}
 <h1> Đây là trang chủ của phản hồi</h1>
 {% endblock %}

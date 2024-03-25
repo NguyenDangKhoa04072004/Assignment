@@ -4,18 +4,22 @@ var gravater = 'https://www.gravatar.com/avatar/' + hash + '?d=identicon'
 var image = document.createElement('img')
 image.src = gravater
 document.querySelector('.content nav .profile').appendChild(image)
-sideLinks.forEach(item => {
-    const li = item.parentElement;
-    var click ;
-    item.addEventListener('click', () => {
-        li.classList.add('active');  
-    })
-});
+sideLinks.forEach( item =>{
+     item.addEventListener('click', () =>{
+         const li = item.parentElement
+         sideLinks.forEach( i =>{
+             i.parentElement.classList.remove('active')
+         })
+         li.classList.add('active')
+     })
+})
+
 const menuBar = document.querySelector('.content nav .bx.bx-menu');
 const RmenuBar = document.querySelector('.content nav .notif');
 const sideBar = document.querySelector('.sidebar');
 const RsideBar = document.querySelector('.Rsidebar')
 window.addEventListener('DOMContentLoaded',() => {
+    sideBar.style.display = "none"
     if(localStorage.getItem('sidebarState') == 'close'){
         sideBar.classList.add('close');
     }else{
@@ -43,6 +47,9 @@ window.addEventListener('DOMContentLoaded',() => {
             item.style.backgroundColor = 'white'
         })
     }
+    window.addEventListener('load', () =>{
+        sideBar.style.display = ""
+    })
 })
 menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
