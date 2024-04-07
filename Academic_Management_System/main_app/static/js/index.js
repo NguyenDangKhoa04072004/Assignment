@@ -35,14 +35,14 @@ window.addEventListener('DOMContentLoaded',() => {
             item.style.border = '2px white solid'
             item.style.color = '#fbfbfb'
         })
-        document.querySelectorAll('.content nav #dropdown a').forEach( item =>{
+        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
             item.style.color = 'white'
             item.style.backgroundColor = 'black'
         })
         toggler.checked = true;
     }else{
         document.body.classList.remove('dark');
-        document.querySelectorAll('.content nav #dropdown a').forEach( item =>{
+        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
             item.style.color = 'black'
             item.style.backgroundColor = 'white'
         })
@@ -89,7 +89,7 @@ toggler.addEventListener('change', function () {
             item.style.border = '2px white solid'
             item.style.color = '#fbfbfb'
         })
-        document.querySelectorAll('.content nav #dropdown a').forEach( item =>{
+        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
             item.style.color = 'white'
             item.style.backgroundColor = 'black'
         })
@@ -104,7 +104,7 @@ toggler.addEventListener('change', function () {
             item.style.border = '2px black solid'
             item.style.color = 'black'
         })
-        document.querySelectorAll('.content nav #dropdown a').forEach( item =>{
+        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
             item.style.color = 'black'
             item.style.backgroundColor = 'white'
         })

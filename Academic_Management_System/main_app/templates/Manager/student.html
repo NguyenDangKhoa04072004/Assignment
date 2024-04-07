@@ -9,6 +9,7 @@
 {% endblock%}
 
 {% block main %}
+{% if List != None %}
 <h1 style="text-align: center;"> Danh sách sinh viên</h1>
 <table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
   <style>
@@ -19,32 +20,83 @@
   <thead style="text-align: center;">
     <tr class="table-active">
       <th scope="col">Mã số sinh viên</th>
-      <th scope="col">Tên sinh viên</th>
+      <th scope="col">Họ và tên</th>
       <th scope="col">Email</th>
       <th scope="col">Ngành</th>
-      <th scope="col">Khoa</th>
       <th scope="col">GPA</th>
       <th scope="col">Hành động</th>
     </tr>
   </thead>
   <tbody style="text-align: center;" style="border: 2px black solid;">
+    {% for item in List%}
     <tr class="table-active">
-      <td>2211618</td>
-      <td>Nguyễn Đăng Khoa</td>
-      <td>khoa47245@gmail.com</td>
-      <td>Khoa học máy tính</td>
-      <td>Khoa học và kỹ thuật máy tính</td>
-      <td>2.6</td>
+      <td>{{item.ID}}</td>
+      <td>{{item.Name}}</td>
+      <td>{{item.Sex}}</td>
+      <td>{{item.Email}}</td>
+      <td>{{item.Field}}</td>
       <td><span>
         <button type="button" class="btn btn-info"> <a href="#"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
         <button type="button" class="btn btn-success"><a href="#"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
-        <button type="button" class="btn btn-danger"><a href="#"><i class='bx bxs-trash-alt' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-danger"><a href="#"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal"></i></a></button>
        
       </span></td>
+    </tr>
+    <div class="modal" id = "mymodal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: red;">Xoá sinh viên</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p style="font-weight: bolder;">Bạn có chắc chắn muốn xoá sinh viên {{item.Name}} không ?</p>
+          </div>
+          <div class="modal-footer">
+            <form action="{% url 'doDelStd' item.ID%}">
+              <button type="submit" class="btn btn-danger">Chắc chắn</button>
+            </form>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <tr class="table-active" >
+      <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
+    </tr>
+  </tbody>
+</table>
+
+{% else %}
+<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+  <style>
+     th, td{
+        border: 2px black solid;
+     }
+  </style>
+  <thead style="text-align: center;">
+    <tr class="table-active">
+      <tr class="table-active">
+        <th scope="col">Mã số sinh viên</th>
+        <th scope="col">Họ và tên</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ngành</th>
+        <th scope="col">GPA</th>
+        <th scope="col">Hành động</th>
+      </tr>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;" style="border: 2px black solid;">
+    <tr class="table-active">
+      <td colspan="7"> <h4>No Recording</h4></td>
     </tr>
     <tr class="table-active" >
       <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
     </tr>
   </tbody>
 </table>
+{% endif%}
 {% endblock %}

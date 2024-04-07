@@ -1,0 +1,55 @@
+{% extends 'Manager/student.html'%}
+{% block main %}
+<a href="{% url 'student_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<h2 style="text-align: center;">Thông tin sinh viên</h2>
+<hr style="border: 2px solid black;">
+<div>
+<table style="width: 100%; text-align: center; margin-bottom: 30px;" >
+   <style>
+       th,td{
+          width: 25%;
+       }
+   </style>
+    <thead>
+       <tr>
+          <th><h5>Mã số sinh viên</h5></th>
+          <th><h5>Họ và tên</h5></th>
+          <th><h5>Giới tính</h5></th>
+          <th><h5>Ngày sinh</h5></th>
+       </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><h5>{{Student.ID}}</h5></td>
+        <td><h5>{{Student.Name}}</h5></td>
+        <td><h5>{{Student.Sex}}</h5></td>
+        <td><h5>{{Student.Date}}</h5></td>
+      </tr>
+    </tbody>
+</table>
+<table style="width: 100%; text-align: center; margin-bottom: 30px;">
+  <style>
+      th,td{
+         width: 25%;
+      }
+  </style>
+   <thead>
+      <tr>
+         <th><h5>Ngành</h5></th>
+         <th><h5>Khoa</h5></th>
+         <th><h5>Năm vào</h5></th>
+         <th><h5>Email</h5></th>
+      </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td><h5>{{Student.Field}}</h5></td>
+       <td><h5>{{Student.Khoa}}</h5></td>
+       <td><h5>{{Student.Year}}</h5></td>
+       <td><h5>{{Student.Email}}</h5></td>
+     </tr>
+   </tbody>
+</table>
+</div>
+
+{% endblock%}

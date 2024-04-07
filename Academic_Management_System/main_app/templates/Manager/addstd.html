@@ -1,0 +1,84 @@
+{% extends 'Manager/student.html'%}
+{% block main %}
+<a href="{% url 'student_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<form method="post" action="{% url 'doAddStd'%}">
+  {% csrf_token %}
+  <fieldset>
+    <legend style="text-align: center;"><h4>Thêm sinh viên</h4></legend>
+    {% if message != None %}
+    <h6 style="text-align: center; color: red;">{{message}}</h6>
+    {% endif %}
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Mã số sinh viên</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào mã số sinh viên" name="id">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Tên sinh viên</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào tên" name="name">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Địa chỉ email của sinh viên</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào email " name="email">
+    </div>
+    <fieldset>
+      <label for="exampleInputEmail1" class="form-label mt-4">Giới tính</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sex" id="optionsRadios1" value="Nam" checked="">
+        <label class="form-check-label" for="optionsRadios1">
+          Nam
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sex" id="optionsRadios2" value="Nữ">
+        <label class="form-check-label" for="optionsRadios2">
+          Nữ
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="sex" id="optionsRadios2" value="Không biết">
+        <label class="form-check-label" for="optionsRadios2">
+          Không biết
+        </label>
+      </div>
+    </fieldset>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Ngày sinh</label>
+      <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="date">
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Ngành</label>
+      <select class="form-select" id="exampleSelect1" name="field">
+        <option>----------Chọn ngành-----------</option>
+        <option>Khoa học máy tính</option>
+        <option>Kỹ thuật máy tính</option>
+        <option>Công nghệ phần mềm</option>
+        <option>Công nghệ thông tin</option>
+        <option>Trí tuệ nhân tạo</option>
+      </select>
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Khoa</label>
+      <select class="form-select" id="exampleSelect1" name="khoa">
+        <option>----------Chọn khoa-----------</option>
+        <option>Khoa học và kỹ thuật máy tính</option>
+        <option>Công nghệ thông tin</option>
+        <option>Trí tuệ nhân tạo và ứng dụng</option>
+      </select>
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Năm vào</label>
+      <select class="form-select" id="exampleSelect1" name="year">
+        <option>2024</option>
+        <option>2023</option>
+        <option>2022</option>
+        <option>2021</option>
+      </select>
+    </div>
+    <div>
+      <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}
