@@ -22,8 +22,9 @@
       <th scope="col">Mã số sinh viên</th>
       <th scope="col">Họ và tên</th>
       <th scope="col">Email</th>
+      <th scope="col">Ngày sinh</th>
       <th scope="col">Ngành</th>
-      <th scope="col">GPA</th>
+      <th scope="col">Năm vào</th>
       <th scope="col">Hành động</th>
     </tr>
   </thead>
@@ -32,9 +33,10 @@
     <tr class="table-active">
       <td>{{item.ID}}</td>
       <td>{{item.Name}}</td>
-      <td>{{item.Sex}}</td>
       <td>{{item.Email}}</td>
-      <td>{{item.Field}}</td>
+      <td>{{item.Date}}</td>
+      <td>{{item.Major}}</td>
+      <td>{{item.Year}}</td>
       <td><span>
         <button type="button" class="btn btn-info"> <a href="#"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
         <button type="button" class="btn btn-success"><a href="#"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>

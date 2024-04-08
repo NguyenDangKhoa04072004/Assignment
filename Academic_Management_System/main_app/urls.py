@@ -9,8 +9,13 @@ urlpatterns = [
     path('doLogin', views.doLogin, name="doLogin"),
     path('doRegister',views.doRegister, name="doRegister"),
     # Student Path
-    path('student_home', StudentViews.index, name="student_home"),
+    path('student_home', StudentViews.student_home, name="student_home"),
+    path('tkb',StudentViews.tkb, name="tkb"),
+    path("register_course", StudentViews.register, name="register_course"),
+    path("course", StudentViews.course, name="course"),
+    path("result",StudentViews.result, name = "result"),
     # Teacher Path 
+
     # Admin Path
     path('admin_home', AdminViews.home, name="admin_home"),
     path('student_view', AdminViews.student_view, name="student_views"),

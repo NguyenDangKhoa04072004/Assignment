@@ -1,16 +1,21 @@
 from django.shortcuts import render, HttpResponseRedirect
 from datetime import datetime
 from django.urls import reverse
+from database import Student, Teacher, Course
 def home(request):
   return render(request,'Manager/home.html')
 def student_view(request):
   return render(request,'Manager/student.html',{
-     'List':Student.list_student()
+     'List':Student.all()
   })
 def teacher_view(request):
-  return render(request,'Manager/teacher.html')
+  return render(request,'Manager/teacher.html',{
+    'List':Teacher.all()
+  })
 def course_view(request):
-  return render(request,'Manager/course.html')
+  return render(request,'Manager/course.html',{
+    'List':Course.all()
+  })
 def notification_view(request):
   return render(request,'Manager/notification.html')
 def feedback_view(request):
