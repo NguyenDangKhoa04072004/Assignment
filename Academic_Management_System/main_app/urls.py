@@ -15,7 +15,11 @@ urlpatterns = [
     path("course", StudentViews.course, name="course"),
     path("result",StudentViews.result, name = "result"),
     # Teacher Path 
-
+    path('teacher_home', TeacherViews.teacher_home , name="teacher_home"),
+    path('schedule', TeacherViews.schedule , name="schedule"),
+    path('teacher_course', TeacherViews.course, name="teacher_course"),
+    path('score',TeacherViews.score, name="score"),
+    path('notification', TeacherViews.notification , name="notification"),
     # Admin Path
     path('admin_home', AdminViews.home, name="admin_home"),
     path('student_view', AdminViews.student_view, name="student_views"),

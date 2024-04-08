@@ -1,0 +1,14 @@
+{% extends 'Teacher/base.html' %}
+{% load static %}
+{% block menu %}
+<li ><a href="{% url 'teacher_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
+<li><a href="{% url 'schedule' %}"><i class='bx bxs-calendar'></i>Lịch trình</a></li>
+<li><a href="{% url 'teacher_course' %}"><i class='bx bxs-user-account'></i>Khoá học</a></li>
+<li><a href="{% url 'score' %}"><i class='bx bxs-book'></i>Nhập điểm</a></li>
+<li class = "active"><a href="{% url 'notification' %}"><i class='bx bxs-bar-chart-alt-2'></i>Thông báo</a></li>
+{% endblock%}
+
+{% block main %}
+<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đây là trang thông báo</h1>
+
+{% endblock %}
