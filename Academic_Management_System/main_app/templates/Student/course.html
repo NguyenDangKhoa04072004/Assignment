@@ -1,10 +1,10 @@
 {% extends 'Student/base.html' %}
 {% load static %}
 {% block menu %}
-    <li class = "active"><a href="{% url 'student_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
+    <li ><a href="{% url 'student_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
     <li><a href="{% url 'tkb' %}"><i class='bx bxs-calendar'></i>Thời Khóa Biểu</a></li>
     <li><a href="{% url 'register_course' %}"><i class='bx bxs-user-account'></i>Đăng Ký Khóa Học</a></li>
-    <li><a href="{% url 'course' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
+    <li class = "active" ><a href="{% url 'course' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li><a href="{% url 'result' %}"><i class='bx bxs-bar-chart-alt-2'></i>Kết Quả</a></li>
 {% endblock%}
 
