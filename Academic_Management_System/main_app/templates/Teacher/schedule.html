@@ -5,10 +5,73 @@
 <li class = "active"><a href="{% url 'schedule' %}"><i class='bx bxs-calendar'></i>Lịch trình</a></li>
 <li><a href="{% url 'teacher_course' %}"><i class='bx bxs-user-account'></i>Khoá học</a></li>
 <li><a href="{% url 'score' %}"><i class='bx bxs-book'></i>Nhập điểm</a></li>
-<li><a href="{% url 'notification' %}"><i class='bx bxs-bar-chart-alt-2'></i>Thông báo</a></li>
+<li><a href="{% url 'notification' %}"><i class='bx bx-bell'></i>Thông báo</a></li>
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đây là trang lịch trình</h1>
-
+<style>
+    th, td {
+      border: 2px solid black;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+</style>
+<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lịch Trình Giảng Dạy</h1>
+<table class="table table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Mã MH</th>
+        <th scope="col">Tên Môn Học</th>
+        <th scope="col">Tín Chỉ</th>
+        <th scope="col">Lớp</th>
+        <th scope="col">Thứ</th>
+        <th scope="col">Tiết</th>
+        <th scope="col">Giờ</th>
+        <th scope="col">Phòng</th>
+        <th scope="col">Tuần Học</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light">
+        <td>CH1003</td>
+        <td>Hóa Đại Cương</td>
+        <td>3</td>
+        <td>L03</td>
+        <td>Thứ Ba</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="table-active">
+        <td colspan="2" style="border-bottom: 0px;"></td>
+        <td>3</td>
+        <td>L05</td>
+        <td>Thứ Năm</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="table-light">
+        <td colspan="2" style="border-top: 0px; border-bottom: 0px;"></td>
+        <td>3</td>
+        <td>L07</td>
+        <td>Thứ Bảy</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+      <tr class="table-active">
+        <td colspan="2" style="border-top: 0px;"></td>
+        <td>3</td>
+        <td>L11</td>
+        <td>Thứ Tư</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+  </table>
 {% endblock %}

@@ -5,10 +5,52 @@
 <li><a href="{% url 'schedule' %}"><i class='bx bxs-calendar'></i>Lịch trình</a></li>
 <li><a href="{% url 'teacher_course' %}"><i class='bx bxs-user-account'></i>Khoá học</a></li>
 <li><a href="{% url 'score' %}"><i class='bx bxs-book'></i>Nhập điểm</a></li>
-<li class = "active"><a href="{% url 'notification' %}"><i class='bx bxs-bar-chart-alt-2'></i>Thông báo</a></li>
+<li class = "active"><a href="{% url 'notification' %}"><i class='bx bx-bell'></i>Thông báo</a></li>
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đây là trang thông báo</h1>
-
+<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Thông Báo</h1>
+Nếu không có 
+<hr>
+<p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Không Có Thông Báo Mới</p>
+<hr>
+Nếu có
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Người Gửi_Tiêu Đề_Thời Gian
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="font-family: Verdana, Geneva, Tahoma, sans-serifs;">
+        <div class="accordion-body">
+          <strong>Nội Dung</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          Người Gửi_Tiêu Đề_Thời Gian
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="accordion-body">
+          <strong>Nội Dung</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Người Gửi_Tiêu Đề_Thời Gian
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <div class="accordion-body">
+          <strong>Nội Dung</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

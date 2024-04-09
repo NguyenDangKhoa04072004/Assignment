@@ -9,6 +9,36 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đây là trang đăng ký khoá học</h1>
-
+<style>
+    th, td {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        border: 2px solid black;
+    }
+</style>
+<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đăng Ký Khóa Học</h1>
+<form class="d-flex">
+    <input class="form-control me-sm-2" type="search" placeholder="Mã Môn Học">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class='bx bx-search'></i></button>
+</form>
+Nếu Có
+<table class="table table-hover">
+    <thead>
+      <tr class="table-active">
+        <th scope="col">Mã Môn Học</th>
+        <th scope="col">Tên Môn Học</th>
+        <th scope="col">Số Tín Chỉ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light">
+        <td>CH1003</td>
+        <td>Hóa Đại Cương</td>
+        <td>3</td>
+      </tr>
+    </tbody>
+</table>
+Nếu Không
+<hr>
+<p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Không Có Môn Học Mở</p>
+<hr>
 {% endblock %}

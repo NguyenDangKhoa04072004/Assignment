@@ -6,11 +6,20 @@
     <li><a href="{% url 'register_course' %}"><i class='bx bxs-user-account'></i>Đăng Ký Khóa Học</a></li>
     <li><a href="{% url 'course' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li><a href="{% url 'result' %}"><i class='bx bxs-bar-chart-alt-2'></i>Kết Quả</a></li>
-{% endblock%}
+{% endblock %}
 {% block main %}
 <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Thời Khóa Biểu</h1>
 
 <table class="table table-hover">
+  <style>
+    th, td {
+      border: 2px solid black;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+  </style>
   <thead>
     <tr class="table-primary">
       <th scope="col">Mã MH</th>
@@ -36,7 +45,42 @@
       <td>Column content</td>
       <td>Column content</td>
     </tr>
+    <tr class="table-active">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-light">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="table-active">
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
   </tbody>
 </table>
-
+<hr>
+<p>Tổng Số Tín Chỉ:</p>
+<hr>
 {% endblock %}
