@@ -241,7 +241,7 @@ class Teacher():
   def update(teacher_id,new_name,new_email, new_level,new_field):
         user_id = db.child('Teacher').child(teacher_id).child('UID').get().val()
         db.child('Teacher').child(teacher_id).update({
-                    ' Name' : new_name,
+                    'Name' : new_name,
                     'Email' : new_email,
                     'Level' : new_level,
                     'Field' : new_field,

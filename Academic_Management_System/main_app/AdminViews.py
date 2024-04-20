@@ -10,14 +10,12 @@ def login_required(func):
     else:
       return func(request,*args, *kwargs)
   return wrapper
-@login_required
 def home(request):
     return render(request,'Manager/home.html',{
        'Student': len(Student.all()) if Student.all() != None else 0,
        'Teacher': len(Teacher.all()) if Teacher.all() != None else 0,
        'Course': len(Teacher.all()) if Course.all() != None else 0,
     })
-@login_required
 def student_view(request):
     return render(request,'Manager/student.html',{
       'List':Student.all()
@@ -26,26 +24,21 @@ def teacher_view(request):
     return render(request,"Manager/teacher.html",context={
        'List':Teacher.all()
     })
-@login_required
 def course_view(request):
     return render(request,'Manager/course.html',{
     'List':Course.all()
   })
-@login_required
 def notification_view(request):
     return render(request,'Manager/notification.html',{
        'student_list':Student.all(),
        'teacher_list':Teacher.all()
     })
-@login_required
 def feedback_view(request):
     return render(request,'Manager/feedback.html')
-@login_required
 def stdinfo(request, id):
     return render(request,'Manager/stdinfo.html',{
       'student': Student.get_student(id)
     })
-@login_required
 def editstd(request,id):
     n = datetime.now().year
     year = list(range(n,1999,-1))
@@ -58,7 +51,6 @@ def editstd(request,id):
     'Major': Major(),
     'Year':year
   })
-@login_required
 def doEditStd(request,id):
     if request.method == 'POST':
       Student.update(
@@ -70,7 +62,6 @@ def doEditStd(request,id):
         request.POST['year']
       )
       return HttpResponseRedirect(reverse(student_view))
-@login_required
 def addstd(request):
     n = datetime.now().year
     year = list(range(n,1999,-1))
@@ -79,7 +70,6 @@ def addstd(request):
       'Major': Major(),
       'Year':year
     })
-@login_required
 def doAddStd(request):
     if request.method == 'POST':
       date = datetime.strptime(request.POST['date'],'%Y-%m-%d')
@@ -99,7 +89,6 @@ def doAddStd(request):
       return  render(request,'Manager/addstd.html',{
           'message':message
       })
-@login_required
 def doDelStd(request, id):
     Student.remove(id)
     return HttpResponseRedirect(reverse(student_view))
@@ -107,12 +96,10 @@ def teacherinfo(request,id):
   return render(request,'Manager/teacherinfo.html',{
      'teacher':Teacher.get_teacher(id)
   })
-@login_required
 def addteacher(request):
     return render(request,'Manager/addteacher.html',{
       'message':None
     })
-@login_required
 def doAddTeacher(request):
     if request.method == 'POST':
       message = Teacher.create(
@@ -129,12 +116,10 @@ def doAddTeacher(request):
         return   render(request,'Manager/addteacher.html',{
             'message':message
         })
-@login_required
 def editTeacher(request,id):
     return render(request,'Manager/editTeacher.html',{
       'teacher':Teacher.get_teacher(id)
     })
-@login_required
 def doEditTeacher(request,id):
     if request.method == 'POST':
       Teacher.update(
@@ -145,16 +130,13 @@ def doEditTeacher(request,id):
           request.POST['field']
       )
       return HttpResponseRedirect(reverse(teacher_view))
-@login_required
 def doDelTeacher(request, id):
     Teacher.remove(id)
     return HttpResponseRedirect(reverse(teacher_view))
-@login_required
 def addCourse(request):
     return render(request,'Manager/addcourse.html',{
      'message':None
   })
-@login_required
 def doAddCourse(request):
     if request.method =='POST':
       message = Course.create(
@@ -169,12 +151,10 @@ def doAddCourse(request):
         return render(request,'Manager/addcourse.html',{
           'message':message
         }) 
-@login_required
 def editCourse(request,id):
     return render(request,'Manager/editCourse.html',{
       'course':Course.getCourse(id)
     })
-@login_required
 def doEditCourse(request,id):
     if request.method == 'POST':
       Course.update(
@@ -184,7 +164,6 @@ def doEditCourse(request,id):
          request.POST['type']
       )
       return HttpResponseRedirect(reverse(course_view))
-@login_required
 def doDelCourse(request,id):
     Course.remove(id)
     return HttpResponseRedirect(reverse(course_view))
