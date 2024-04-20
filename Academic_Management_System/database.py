@@ -45,8 +45,12 @@ class User():
              }
   def AdminLogin(email,password):
     try:
-      auth.sign_in_with_email_and_password(email,password)
-      return None
+      user = auth.sign_in_with_email_and_password(email,password)
+      type = db.child('User').child(user['localId']).child('Type').get().val()
+      if type == 'Student' or type =='Teacher':
+         return "Email hoặc mật khẩu không đúng"
+      else:
+         return None
     except:
       return "Email hoặc mật khẩu không đúng"
   def create(type, id , email,password):

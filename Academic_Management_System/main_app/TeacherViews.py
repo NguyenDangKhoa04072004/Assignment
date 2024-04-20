@@ -3,7 +3,7 @@ from django.urls import reverse
 from Database import Teacher, Class, Course, Class, Content
 def login_required(func):
     def wrapper(request, *args, **kwargs):
-      if 'teacher_id' not in request.session and ("login" not in request.session or request.session["login"] == False):
+      if 'teacher_id' not in request.session or ("login" not in request.session or request.session["login"] == False):
          return redirect('login')
       else:
          return func(request, *args, *kwargs)

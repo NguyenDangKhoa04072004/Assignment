@@ -14,13 +14,13 @@
   {% if active %}
     <div class="container active" id="container">
         <div class="form-container sign-up">
-            <form method="post" action="">
+            <form method="post" action="{% url 'adminLogin' %}">
                {% csrf_token %}
                 <h1>Đăng nhập cho quản trị viên</h1>
                 <input type="email" placeholder="Địa chỉ email" name="email">
                 <input type="password" placeholder="Mật khẩu" name="password">
                 {% if message_admin != None %}
-                  <span>{{message_admin}}</span>
+                  <span style="color: red;">{{message_admin}}</span>
                 {% endif%}
                 <button>Đăng nhập</button>
             </form>
@@ -32,7 +32,7 @@
                 <input type="email" placeholder="Địa chỉ email" name="email">
                 <input type="password" placeholder="Mật khẩu" name="password">
                 {% if message != None %}
-                  <span>{{message}}</span>
+                  <span style="color: red;">{{message}}</span>
                 {% endif%}
                 <a href="#">Quên mật khẩu ?</a>
                 <button>Đăng nhập</button>
@@ -62,7 +62,7 @@
                 <input type="email" placeholder="Địa chỉ email" name="email">
                 <input type="password" placeholder="Mật khẩu" name="password">
                 {% if message_admin != None %}
-                  <span>{{message_admin}}</span>
+                  <span style="color: red;">{{message_admin}}</span>
                 {% endif%}
                 <button>Đăng nhập</button>
             </form>
@@ -74,7 +74,7 @@
                 <input type="email" placeholder="Địa chỉ email" name="email">
                 <input type="password" placeholder="Mật khẩu" name="password">
                 {% if message != None %}
-                  <span>{{message}}</span>
+                  <span style="color: red;">{{message}}</span>
                 {% endif%}
                 <a href="#">Quên mật khẩu ?</a>
                 <button>Đăng nhập</button>

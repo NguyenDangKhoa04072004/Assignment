@@ -4,7 +4,7 @@ from Database import Student, Course, Class, Content
 
 def login_required(func):
   def wrapper(request, *args, **kwargs):
-    if 'student_id' not in request.session and request.session['login'] == False:
+    if 'student_id' not in request.session or request.session['login'] == False:
       return redirect('login')
     else:
       return func(request, *args, **kwargs)

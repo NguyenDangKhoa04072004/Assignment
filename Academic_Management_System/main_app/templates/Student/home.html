@@ -11,13 +11,13 @@
 {% block main %}
 <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Trang chủ</h1>
 <hr>
-
-<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào {{student.Name}}</h3>
+<h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center;"> Xin Chào {{student.Name}} !!</h4>
+<hr>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Cơ Bản</h5>
-<ul>
-    <li>Họ và Tên: {{student.Name}}</li>
-    <li>Email: {{student.Email}}</li>
-    <li>Ngày Sinh: {{student.Date}}</li>
+<ul class="student-info">
+    <li class="item-menu">Họ và Tên: {{student.Name}}</li>
+    <li class="item-menu">Email: {{student.Email}}</li>
+    <li class="item-menu">Ngày Sinh: {{student.Date}}</li>
 </ul>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Sinh Viên</h5>
 <ul>
