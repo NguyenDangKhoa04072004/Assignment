@@ -1,0 +1,119 @@
+{% extends 'Teacher/course.html'%}
+{% load static %}
+{% block main %}
+<a href="{% url 'teacher_course' %}"><button type="button" class="btn btn-success", style="width: 80px; margin-bottom: 10px;"><i class='bx bx-left-arrow-alt' ></i></button></a>
+{% if Content != None %}
+<script src ="{% static 'js/content.js'%}"></script>
+{% for item in Content %}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{item.Index}}" aria-expanded="false" aria-controls="collapse">
+        <h3 style="color: rgb(0, 72, 255); font-family: Arial, Helvetica, sans-serif;">{{item.Subject}}</h3> 
+      </button>
+    </h2>
+    <div id="collapse{{item.Index}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body" style="padding: 10px;">
+          {% if item.Content == None %}
+          <hr>
+          <h4 style="text-align: center;">Chưa có nội dung nào </h4>
+          {% else %}
+           {% for data in item.Content %}
+           <hr>
+           <div class="content-material ">
+            <div>
+              <a href="{{data.URL}}"><button type="button" class="btn btn-primary" ><i class='bx bxs-file'></i></button> {{data.Title}}</a>
+            </div>
+            <div>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#mydel{{item.Index}}" ><i class='bx bxs-trash-alt'></i></button>
+             </div>
+           </div>
+           <hr>
+           <div class="modal" id="mydel{{item.Index}}">
+            <form action="{% url 'delContent' Course Class item.Subject data.Index %}" method="get">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Xoá nội dung</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true"></span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                     <p>Bạn có chắc chắn muốn xoá tài liệu này</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Chắn chắn</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+           {% endfor %}
+         {% endif %}
+         <button type="button" class="btn btn-success" data-bs-toggle ="modal" data-bs-target="#mymodal{{item.Index}}"><i class='bx bx-plus' ></i> Thêm nội dung</button>
+      </div> 
+    </div>
+  </div>
+  <div class="modal" id="mymodal{{item.Index}}">
+    <form action="{% url 'upload' Course Class item.Subject %}" enctype="multipart/form-data" method="post">
+      {% csrf_token %}
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tải lên một tệp</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <label for="exampleInputEmail1" class="form-label mt-4"> <strong>Tiêu đề</strong></label>
+              <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tiêu đề" name="title" required>
+            </div>
+            <div>
+              <label for="exampleInputEmail1" class="form-label mt-4"> <strong>Tệp tải lên</strong></label>
+              <br>
+              <input type="file" name="file">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Tải lên</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endfor %}
+{% else %}
+<h1 style="text-align: center;">Khoá học hiện tại chưa có nội dung nào</h1>
+{% endif %}
+<hr>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-primary" style="margin-top: 10px; " data-bs-toggle="modal" data-bs-target="#mysubject"><i class='bx bx-list-plus' ></i> Thêm chủ đề</button></div>
+<div class="modal" id="mysubject">
+  <form action="{% url 'addsubject' Course Class%}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm chủ để</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label for="exampleInputEmail1" class="form-label mt-4"> <strong>Chủ đề</strong></label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chủ đề" name="subject" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Thêm</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

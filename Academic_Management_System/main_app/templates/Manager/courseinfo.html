@@ -1,0 +1,105 @@
+{% extends 'Manager/course.html' %}
+{% block main %}
+<a href="{% url 'course_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<h1 style="text-align: center;">Thông tin khoá học</h1>
+<h4 style="text-align: center;">Mã môn học: {{course.ID}}</h4>
+<h4 style="text-align: center;">Tên môn học: {{course.Name}}</h4>
+<h4 style="text-align: center;">Số tín chỉ: {{course.Credits}}</h4>
+<h4 style="text-align: center;">Loại môn học: {{course.Type}}</h4>
+<hr>
+{% if CLass_List == None %}
+<h3 style="text-align: center;"> Danh sách lớp học</h3>
+<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+  <style>
+     th, td{
+        border: 2px black solid;
+     }
+  </style>
+  <thead style="text-align: center;">
+    <tr class="table-active">
+      <tr class="table-active">
+        <th scope="col">Lớp</th>
+        <th scope="col">Giảng viên</th>
+        <th scope="col">Thứ</th>
+        <th scope="col">Tiết</th>
+        <th scope="col">Giờ</th>
+        <th scope="col">Phòng</th>
+        <th scope="col">Sĩ số</th>
+      </tr>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;" style="border: 2px black solid;">
+    <tr class="table-active">
+      <td colspan="7"> <h4>Hiện tại không có lớp nào đang mở</h4></td>
+    </tr>
+    <tr class="table-active" >
+      <td colspan="7"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></td>
+    </tr>
+  </tbody>
+</table>
+{% else %}
+<h1 style="text-align: center;"> Danh sách lớp học</h1>
+<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+  <style>
+     th, td{
+        border: 2px black solid;
+     }
+  </style>
+  <thead style="text-align: center;">
+    <tr class="table-active">
+      <th class = "data-header" scope="col">Lớp</th>
+      <th class = "data-header" scope="col">Giảng viên</th>
+      <th class = "data-header" scope="col">Thứ</th>
+      <th class = "data-header" scope="col">Tiết</th>
+      <th class = "data-header" scope="col">Giờ</th>
+      <th class = "data-header" scope="col">Phòng</th>
+      <th class = "data-header" scope="col">Cơ sở</th>
+      <th class = "data-header" scope="col">Sĩ số</th>
+      <th class = "data-header" scope="col">Hành động</th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;" style="border: 2px black solid;">
+    {% for item in CLass_List%}
+    <tr class="table-active">
+      <td class="data-recording">{{item.ID}}</td>
+      <td class="data-recording">{{item.Teacher.Name}}</td>
+      <td class="data-recording">{{item.Time.Day}}</td>
+      <td class="data-recording">{{item.Time.Period}}</td>
+      <td class="data-recording">{{item.Time.Start}}-{{item.Time.End}}</td>
+      <td class="data-recording">{{item.Classroom.Building}}-{{item.Classroom.Room}}</td>
+      <td class="data-recording">{{item.Classroom.Base}}</td>
+      <td class="data-recording">{{item.Count}}/{{item.Maxsize}}</td>
+      <td><span>
+        <button type="button" class="btn btn-success"><a href="{% url 'editClass' course.ID item.ID %}"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-danger"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal{{item.ID}}"></i></button>
+      </span></td>
+    </tr>
+    <div class="modal" id = "mymodal{{item.ID}}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" style="color: red;">Xoá lớp học</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p style="font-weight: bolder;">Bạn có chắc chắn muốn xoá lớp {{item.ID}} không ?</p>
+          </div>
+          <div class="modal-footer">
+            <form action="{% url 'doDelClass' course.ID  item.ID %}">
+              <button type="submit" class="btn btn-danger">Chắc chắn</button>
+            </form>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    <tr class="table-active" >
+      <td colspan="9"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

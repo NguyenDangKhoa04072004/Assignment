@@ -1,0 +1,58 @@
+{% extends 'Manager/course.html'%}
+{% block main%}
+<a href="{% url 'courseinfo' course_id %}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<form method="post" action="{% url 'doAddClass' course_id %}">
+  {% csrf_token %}
+  <fieldset>
+    <legend style="text-align: center;"><h4>Thêm lớp</h4></legend>
+    {% if message != None %}
+    <h6 style="text-align: center; color: red;">{{message}}</h6>
+    {% endif %}
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Mã lớp học</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào mã môn học" name="class_id">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Mã số giảng viên</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập mã số giảng viên" name="teacher_id">
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Thứ</label>
+      <select class="form-select" id="exampleSelect1" name="day">
+        {% for item in list_day %}
+        <option value="{{item}}">{{item}}</option>
+        {% endfor%}
+      </select>
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Tiết</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Tiết" name="period">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Giờ bắt đầu</label>
+      <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="Start">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Giờ kết thúc</label>
+      <input type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" name="End">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Sĩ số tối đa</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Sĩ số" name="maxsize">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Toà</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Toà" name="building">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Phòng</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phòng" name="room">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Cơ sở</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cơ sở" name="base">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}

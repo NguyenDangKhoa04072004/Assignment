@@ -1,0 +1,24 @@
+.title{
+  background-color: blue;
+  padding: 5px;
+}
+.wrapper {
+   border: solid blue 2px;
+   height: 100%;
+}
+.container-student{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.divider{
+  padding: 20px;
+}
+.search{
+  justify-content: center;
+  padding: 10px;
+}
+#horizon{
+  border-color: rgb(8, 0, 255);
+  border-width: 3px;
+  border-style: double;
+}

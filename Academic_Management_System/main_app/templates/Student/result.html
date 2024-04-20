@@ -10,7 +10,7 @@
 
 {% block main %}
 <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Bảng Điểm</h1>
-<table class="table table-hover">
+<table class="table table-hover"  style="text-align: center;">
     <style>
         th, td {
           border: 2px solid black;
@@ -24,7 +24,6 @@
       <tr class="table-primary">
         <th scope="col">Mã MH</th>
         <th scope="col">Tên Môn Học</th>
-        <th scope="col">Lớp</th>
         <th scope="col">Số TC</th>
         <th scope="col">Điểm Thành Phần</th>
         <th scope="col">Điểm Thi</th>
@@ -32,47 +31,29 @@
       </tr>
     </thead>
     <tbody>
+      {% if Result != None%}
+      {% for item in Result%}
       <tr class="table-light">
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>{{item.Course.ID}}</td>
+        <td>{{item.Course.Name}}</td>
+        <td>{{item.Course.Credits}}</td>
+        <td style="text-align: left;">
+          BT:{{item.Grade.Excercise_Grade}} <br> 
+          BTL:{{item.Grade.Assignment_Grade}} <br>
+          KT:{{item.Grade.MidTerm_Grade}} <br>
+        </td>
+        <td>{{item.Grade.FinalTerm_Grade}}</td>
+        <td>{{item.Grade.Final_Grade}}</td>
       </tr>
-      <tr class="table-active">
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-light">
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-active">
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
+      {% endfor %}
+      {% else %}
+      <td colspan="6" style="text-align: center;"><strong>Không có kết quả nào</strong></td>
+      {% endif %}
     </tbody>
 </table>
 <hr>
-<p>Số Tín Chỉ tích lũy được:</p>
+<p>Số Tín Chỉ tích lũy được: {{Student.Credits}}</p>
 <hr>
-<p>Điểm Trung Bình Tích Lũy:</p>
+<p>Điểm Trung Bình Tích Lũy: {{Student.GPA}}</p>
 <hr>
 {% endblock %}

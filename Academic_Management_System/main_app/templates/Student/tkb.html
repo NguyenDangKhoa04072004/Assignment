@@ -8,6 +8,7 @@
     <li><a href="{% url 'result' %}"><i class='bx bxs-bar-chart-alt-2'></i>Kết Quả</a></li>
 {% endblock %}
 {% block main %}
+
 <h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Thời Khóa Biểu</h1>
 
 <table class="table table-hover">
@@ -30,57 +31,31 @@
       <th scope="col">Tiết</th>
       <th scope="col">Giờ</th>
       <th scope="col">Phòng</th>
-      <th scope="col">Tuần Học</th>
+      <th scope="col">Cơ sở</th>
     </tr>
   </thead>
   <tbody>
+    {% if TKB != None %}
+    {% for item in TKB %}
     <tr class="table-light">
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <td>{{item.Course.ID}}</td>
+      <td>{{item.Course.Name}}</td>
+      <td>{{item.Course.Credits}}</td>
+      <td>{{item.Class.ID}}</td>
+      <td>{{item.Class.Time.Period}}</td>
+      <td>{{item.Class.Time.Day}}</td>
+      <td>{{item.Class.Time.Start}}-{{item.Class.Time.End}}</td>
+      <td>{{item.Class.Classroom.Building}}-{{item.Class.Classroom.Room}}</td>
+      <td>{{item.Class.Classroom.Base}}</td>
     </tr>
-    <tr class="table-active">
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-light">
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr class="table-active">
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+    {% endfor %}
+    {% else %}
+    <td colspan="9" style="text-align: center;"><strong>Không có thời khoá biểu</strong></td>
+    {% endif %}
   </tbody>
 </table>
 <hr>
-<p>Tổng Số Tín Chỉ:</p>
+<p style="margin-bottom: 10px;">Tổng Số Môn: {{Count}}</p>
+<p>Tổng Số Tín Chỉ: {{Credits}}</p>
 <hr>
 {% endblock %}

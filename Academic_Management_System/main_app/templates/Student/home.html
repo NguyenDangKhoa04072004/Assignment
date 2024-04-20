@@ -10,22 +10,25 @@
 
 {% block main %}
 <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Trang chủ</h1>
-<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào Nguyễn Đăng Khoa</h3>
+<hr>
+
+<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào {{student.Name}}</h3>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Cơ Bản</h5>
 <ul>
-    <li>Họ và Tên:</li>
-    <li>Email:</li>
-    <li>Ngày Sinh:</li>
-    <li>Giới Tính:</li>
-    <li>CCCD:</li>
-    <li>SĐT:</li>
+    <li>Họ và Tên: {{student.Name}}</li>
+    <li>Email: {{student.Email}}</li>
+    <li>Ngày Sinh: {{student.Date}}</li>
 </ul>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Sinh Viên</h5>
 <ul>
-    <li>Khoa:</li>
-    <li>Ngành:</li>
-    <li>Niên Khóa:</li>
-    <li>MSSV:</li>
-    <li>Lớp:</li>
+    <li>Ngành: {{student.Major}}</li>
+    <li>Khóa: {{student.Year}}</li>
+    <li>MSSV: {{student.ID}}</li>
+</ul>
+<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Kết quả học tập</h5>
+<ul>
+    <li>Số tín chỉ tích luỹ: {{student.Credits}}</li>
+    <li>Điểm trung bình tích luỹ: {{student.GPA}}</li>
+
 </ul>
 {% endblock %}

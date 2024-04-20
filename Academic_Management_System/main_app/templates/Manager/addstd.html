@@ -20,63 +20,30 @@
       <label for="exampleInputEmail1" class="form-label mt-4">Địa chỉ email của sinh viên</label>
       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào email " name="email">
     </div>
-    <fieldset>
-      <label for="exampleInputEmail1" class="form-label mt-4">Giới tính</label>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="sex" id="optionsRadios1" value="Nam" checked="">
-        <label class="form-check-label" for="optionsRadios1">
-          Nam
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="sex" id="optionsRadios2" value="Nữ">
-        <label class="form-check-label" for="optionsRadios2">
-          Nữ
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="sex" id="optionsRadios2" value="Không biết">
-        <label class="form-check-label" for="optionsRadios2">
-          Không biết
-        </label>
-      </div>
-    </fieldset>
     <div>
       <label for="exampleInputEmail1" class="form-label mt-4">Ngày sinh</label>
       <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="date">
     </div>
     <div>
       <label for="exampleSelect1" class="form-label mt-4">Ngành</label>
-      <select class="form-select" id="exampleSelect1" name="field">
+      <select class="form-select" id="exampleSelect1" name="major">
         <option>----------Chọn ngành-----------</option>
-        <option>Khoa học máy tính</option>
-        <option>Kỹ thuật máy tính</option>
-        <option>Công nghệ phần mềm</option>
-        <option>Công nghệ thông tin</option>
-        <option>Trí tuệ nhân tạo</option>
-      </select>
-    </div>
-    <div>
-      <label for="exampleSelect1" class="form-label mt-4">Khoa</label>
-      <select class="form-select" id="exampleSelect1" name="khoa">
-        <option>----------Chọn khoa-----------</option>
-        <option>Khoa học và kỹ thuật máy tính</option>
-        <option>Công nghệ thông tin</option>
-        <option>Trí tuệ nhân tạo và ứng dụng</option>
+        {% for item in Major%}
+        <option value="{{item}}">{{item}}</option>
+        {% endfor%}
       </select>
     </div>
     <div>
       <label for="exampleSelect1" class="form-label mt-4">Năm vào</label>
       <select class="form-select" id="exampleSelect1" name="year">
-        <option>2024</option>
-        <option>2023</option>
-        <option>2022</option>
-        <option>2021</option>
+        {% for item in Year%}
+        <option value="{{item}}">{{item}}</option>
+        {% endfor %}
       </select>
     </div>
     <div>
-      <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" autocomplete="off" name="password">
+      <label for="exampleInputPassword1" class="form-label mt-4">Mật khẩu</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="mật khẩu" autocomplete="off" name="password">
     </div>
     <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
   </fieldset>

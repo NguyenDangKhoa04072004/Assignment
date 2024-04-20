@@ -62,30 +62,13 @@ body{
     scrollbar-width: none;
     transition: all 0.3s ease;
 }
-.Rsidebar{
-    position: fixed;
-    top: 56px;
-    right: 0;
-    background: var(--light);
-    width: 260px;
-    height: 100%;
-    z-index: 2000;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    transition: all 0.3s ease;
-}
 .sidebar::-webkit-scrollbar{
     display: none;
 }
-.Rsidebar::-webkit-scrollbar{
-    display: none;
-}
+
 
 .sidebar.close{
     width: 60px;
-}
-.Rsidebar.close{
-    width: 0px;
 }
 .sidebar .logo{
     font-size: 24px;
@@ -204,9 +187,6 @@ body{
     width: calc(100% - 60px);
     left: 60px;
 }
-.Rsidebar.close .content nav{
-    transition: all 0.3 ease;
-}
 .content nav{
     height: 56px;
     background: var(--light);
@@ -291,12 +271,9 @@ body{
     right: -6px;
     width: 20px;
     height: 20px;
-    background: var(--danger);
-    border-radius: 50%;
-    color: var(--light);
-    border: 2px solid var(--light);
-    font-weight: 700;
-    font-size: 12px;
+    border-radius: 80%;
+    color: red;
+    font-weight: 40;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,6 +284,7 @@ body{
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
+    background: none;
 }
 
 .content nav .theme-toggle{

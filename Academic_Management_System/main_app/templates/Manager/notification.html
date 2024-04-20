@@ -1,13 +1,148 @@
 {% extends 'Manager/base.html'%}
+{% load static %}
 {% block menu %}
     <li ><a href="{% url 'admin_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
     <li ><a href="{% url 'student_views' %}"><i class='bx bxs-graduation' ></i>Sinh viên</a></li>
     <li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
     <li><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li class = "active"><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
-    <li><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
 {% endblock%}
 
 {% block main %}
-<h1> Đây là trang chủ của thông báo</h1>
+<h1 style="text-align: center;"> Thông báo</h1>
+<hr>
+<div id="controler" style="display: flex; justify-content: center; gap:5px; align-items: center;">
+     <button data-page = "general"  data-type = "General" style="width: 200px; height: 60px; background-color: var(--light); color: blue;"><h5>General</h5></button>
+     <button data-page = "student_list" data-type = "Student" style="width: 200px; height: 60px; background-color: var(--light); color: blue;"><h5>Student</h5></button>
+     <button data-page = "teacher_list" data-type = "Teacher" style="width: 200px; height: 60px; background-color: var(--light); color: blue;"><h5>Teacher</h5></button>
+</div>
+<hr>
+<!--This is student page-->
+<div class = "Notipage" id="student_list" style="display: none; " >
+    <h1 style="text-align: center;">Danh sách sinh viên</h1>
+    {% if student_list != None%}
+<table class="table table-hover" style="text-align: center; align-items: center; color: var(--dark); ">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Mã số sinh viên</th>
+      <th scope="col">Tên sinh viên</th>
+      <th scope="col">Thông báo riêng </th>
+      <th scope="col">Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in student_list %}
+    <tr class="table-light" id="notiInfo">
+        <th scope="row" id="id_student">{{student.ID}}</th>
+        <td>{{student.Name}}</td>
+        <td>
+          <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
+          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+        </td>
+        <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-info" style="align-items: center; justify-content: center;" data-bs-toggle="modal" data-bs-target="#sendAll"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
+<div class="modal" id ="sendAll">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" >THÔNG BÁO CHO TẤT CẢ SINH VIÊN</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center;" >
+          <label for="exampleInputEmail1" class="form-label mt-4" ><h5>Nội dung</h5></label>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <textarea name="" id="textAll" cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 300px;" required>
+          </textarea>
+        </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submitAll"><i class='bx bxs-send'></i> Gửi</button>
+        <button type="button" class="btn btn-secondary" style="height: 50px; width: 80px; align-items: center; justify-content: center;">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<h1 style="text-align: center;">Hiện tại không có sinh viên nào</h1>
+{% endif %}
+</div>
+
+<!--This is teacher page-->
+<div class = "Notipage" id="teacher_list" style="display: none;">
+        <h1 style="text-align: center;">Danh sách giảng viên</h1>
+        {% if teacher_list != None%}
+    <table class="table table-hover" style="text-align: center; align-items: center; color: var(--dark);">
+      <thead>
+        <tr class="table-primary" >
+          <th scope="col">Mã số giảng viên</th>
+          <th scope="col">Tên sinh viên</th>
+          <th scope="col">Thông báo riêng </th>
+          <th scope="col">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for teacher in teacher_list %}
+        <tr class="table-light" id="notiInfoTeacher">
+            <th scope="row" id="id_teacher">{{teacher.ID}}</th>
+            <td>{{teacher.Name}}</td>
+            <td>
+              <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
+              <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+            </td>
+            <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;"><button type="button" class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#sendAllTeacher"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
+    <div class="modal" id ="sendAllTeacher">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" >
+            <h5 class="modal-title" >THÔNG BÁO CHO TẤT CẢ GIẢNG VIÊN</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div style="text-align: center;" >
+              <label for="exampleInputEmail1" class="form-label mt-4" ><h5>Nội dung</h5></label>
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <textarea name="" id="textAllTeacher" cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 300px;" required>
+              </textarea>
+            </div>
+           
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submitAllTeacher"><i class='bx bxs-send'></i> Gửi</button>
+            <button type="button" class="btn btn-secondary" style="height: 50px; width: 80px; align-items: center; justify-content: center;">Đóng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% else %}
+        <h1 style="text-align: center;">Hiện tại không có giảng viên nào</h1>
+    {% endif %}
+</div>
+<!--This is general page-->
+<div class = "Notipage" id="general" style="display: none; justify-content: center;">
+    <div style="display: flex; flex-direction: column; align-items: center;" id="notiGeneral">
+      <label for="exampleInputEmail1" class="form-label mt-4" ><h5>Tiêu đề </h5></label>
+      <input type="text" placeholder="Tiêu đề" style="width: 780px; height: 80px;">
+      <label for="exampleInputEmail1" class="form-label mt-4" ><h5>Nội dung </h5></label>
+        <textarea name="" id="" cols="100" rows="100" style="height: 500px; overflow-y: scroll; margin-top: 10px;"></textarea>
+        <div style="display: flex; justify-content: center; margin-top: 10px;"><button type="button" class="btn btn-info" ><i class='bx bxs-send'></i> Gửi </button></div>
+    </div>
+</div>
+<script src="{% static 'js/messageTeacher.js' %}" type="module"></script>
 {% endblock %}

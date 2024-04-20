@@ -280,7 +280,7 @@ h6, .h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 abbr[title] {
@@ -3709,7 +3709,7 @@ textarea.form-control-lg {
   text-align: inherit;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
+  /* background-color: var(--light); */
   border: 0;
   border-radius: var(--bs-dropdown-item-border-radius, 0);
 }
@@ -4696,7 +4696,7 @@ textarea.form-control-lg {
 .accordion-item {
   color: var(--bs-accordion-color);
   background-color: var(--bs-accordion-bg);
-  border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color);
+  /* border: var(--bs-accordion-border-width) solid var(--bs-accordion-border-color); */
 }
 .accordion-item:first-of-type {
   border-top-left-radius: var(--bs-accordion-border-radius);
@@ -4722,9 +4722,9 @@ textarea.form-control-lg {
   border-bottom-left-radius: var(--bs-accordion-border-radius);
 }
 
-.accordion-body {
-  padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x);
-}
+/* .accordion-body {
+  /* padding: var(--bs-accordion-body-padding-y) var(--bs-accordion-body-padding-x); */
+
 
 .accordion-flush > .accordion-item {
   border-right: 0;

@@ -1,0 +1,30 @@
+{% extends 'Manager/teacher.html'%}
+{% block main %}
+<a href="{% url 'teacher_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<form method="post" action="{% url 'doEditTeacher' teacher.ID%}">
+  {% csrf_token %}
+  <fieldset>
+    <legend style="text-align: center;"><h4>Cập nhật giảng viên</h4></legend>
+    {% if message != None %}
+    <h6 style="text-align: center; color: red;">{{message}}</h6>
+    {% endif %}
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Tên giảng viên</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào tên" name="name" value="{{teacher.Name}}">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Địa chỉ email của giảng viên</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào email " name="email" value="{{teacher.Email}}">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Trình độ</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Trình độ" name="level" value="{{teacher.Level}}">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Chuyên môn</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chuyên môn" name="field" value="{{teacher.Field}}">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}

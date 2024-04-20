@@ -1,49 +1,155 @@
 {% extends 'Manager/base.html'%}
+{% load static %}
 {% block menu %}
     <li class = "active"><a href="{% url 'admin_home' %}"><i class='bx bxs-home'></i>Trang chủ</a></li>
     <li ><a href="{% url 'student_views' %}"><i class='bx bxs-graduation' ></i>Sinh viên</a></li>
     <li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
     <li><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
-    <li><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
 {% endblock%}
 {% block main %}
-<div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Accordion Item #1
-        </button>
-      </h2>
-      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+<h1 style="text-align: center;">Trang chủ</h1>
+<hr>
+<ul class="menu-list">
+<li>
+  <i class='bx bxs-graduation'></i>
+  <span class="menu-info">
+    <h3>{{Student}}</h3>
+    <p>Số sinh viên</p>
+  </span>
+</li>
+<li>
+    <i class='bx bxs-group' ></i>
+    <span class="menu-info">
+      <h3>{{Teacher}}</h3>
+      <p>Số giảng viên</p>
+    </span>
+</li>
+<li>
+  <i class='bx bxs-book' ></i>
+  <span class="menu-info">
+    <h3>{{Course}}</h3>
+    <p>Số khoá học</p>
+  </span>
+</li>
+</ul>
+<div class="bottom-data-list">
+     <div class="member-list">
+        <div class="member-list-header">
+          <i class='bx bxs-user-detail'></i>
+          <h3>Danh sách quản trị viên</h3>
+          <i class='bx bxs-bookmark-star' ></i>
         </div>
+        <table>
+           <thead>
+             <tr> 
+                <th>Họ và tên</th>
+                <th>Mã số sinh viên</th>
+                <th>Nhiệm vụ</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+              <td>
+                <img src="{% static 'images/ndkProfile.jpg'%}" alt="">
+                <p>Nguyễn Đăng Khoa</p> 
+              </td>
+               <td>2211618</td>
+               <td><span class="task-todo backend">Back-end</span></td>
+             </tr>
+             <tr>
+              <td>
+                <img src="{% static 'images/ndkhProfile.jpg'%}" alt="">
+                <p>Nguyễn Đăng Khoa</p> 
+              </td>
+               <td>2211620</td>
+               <td><span class="task-todo frontend">Front-end</span></td>
+             </tr>
+             <tr>
+              <td>
+                <img src="{% static 'images/hcmut.png'%}" alt="">
+                <p>Nguyễn Trần Bảo Khoa</p> 
+              </td>
+               <td>2211610</td>
+               <td><span class="task-todo frontend">Front-end</span></td>
+             </tr>
+             <tr>
+              <td>
+                <img src="{% static 'images/profileImage.png'%}" alt="">
+                <p>Nguyễn Anh Khoa</p> 
+              </td>
+               <td>2211614</td>
+               <td><span class="task-todo database">Database</span></td>
+             </tr>
+             <tr>
+              <td>
+                <img src="{% static 'images/profileImage.png'%}" alt="">
+                <p>Ngô Đình Anh Khoa</p> 
+              </td>
+               <td>2211609</td>
+               <td><span class="task-todo database">Database</span></td>
+             </tr>
+             <tr>
+              <td>
+                <img src="{% static 'images/profileImage.png'%}" alt="">
+                <p>Phạm Ngọc Thân</p> 
+              </td>
+               <td>1915262</td>
+               <td><span class="task-todo backend">Back-end</span></td>
+             </tr>
+           </tbody>
+        </table>
+     </div>
+     <div class="todo-list">
+      <div class="member-list-header">
+        <i class='bx bxs-note' ></i>
+        <h3>Nhiệm vụ</h3>
+        <i class='bx bx-plus' ></i>
       </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Accordion Item #2
-        </button>
-      </h2>
-      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      <ul class="task-list-todo">
+      <li class="backend">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Xây dựng Admin Views, Student Views, Teacher Views</p>
         </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Accordion Item #3
-        </button>
-      </h2>
-      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="">
-        <div class="accordion-body">
-          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      <li class="database">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Xây dựng API và Login Required</p>
         </div>
-      </div>
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      <li class="frontend">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Làm giao diện cho Login Views </p>
+        </div>
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      <li class="frontend">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Làm giao diện cho Admin Views, Student Views, Teacher Views </p>
+        </div>
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      <li class="backend">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Thiết Lập Authentication, Xây dựng Admin Views</p>
+        </div>
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      <li class="database">
+        <div class="task-title-todo">
+          <i class='bx bxs-check-circle' ></i>
+          <p>Xây dựng và thiết kế Database</p>
+        </div>
+        <i class='bx bx-dots-vertical' ></i>
+      </li>
+      </ul>
     </div>
-  </div>
+</div>
 {% endblock %}

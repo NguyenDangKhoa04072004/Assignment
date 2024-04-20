@@ -1,0 +1,159 @@
+.menu-list{
+   display: grid;
+   grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+   grid-gap: 24px;
+   margin-top: 36px;
+}
+.menu-list  li{
+  padding: 24px;
+  background: var(--light);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  grid-gap:24px;
+  cursor: pointer;
+}
+.menu-list li .bx{
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-list li:nth-child(1) .bx{
+  background-color: var(--light-primary);
+  color: var(--primary);
+}
+.menu-list li:nth-child(2) .bx{
+  background-color: var(--light-danger);
+  color: var(--danger);
+}
+.menu-list li:nth-child(3) .bx{
+  background-color: var(--light-success);
+  color: var(--success);
+}
+.menu-list li .menu-info h3{
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--dark);
+
+}
+.menu-list li .menu-info p{
+  color: var(--dark);
+  font-size: 24px;
+}
+.bottom-data-list{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  color: var(--dark);
+  gap: 20px;
+}
+.bottom-data-list>div{
+   border-radius: 20px;
+   padding: 24px;
+   background-color: var(--light);
+}
+.bottom-data-list .member-list-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.bottom-data-list .member-list-header h3{
+  font-size: 24px;
+  font-weight: 600;
+
+}
+.bottom-data-list .member-list-header h3 bx{
+  cursor: pointer;
+}
+.bottom-data-list .member-list {
+  flex-grow: 1;
+  flex-basis: 500px;
+}
+.bottom-data-list .member-list table{
+   width: 100%;
+   border-collapse: collapse ;
+}
+.bottom-data-list .member-list table th{
+  padding-bottom: 12px;
+  font-size: 13px;
+  padding-left: 16px;
+}
+.bottom-data-list .member-list table td{
+  padding: 16px ;
+}
+.bottom-data-list .member-list table tr td:first-child{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bottom-data-list .member-list img{
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.bottom-data-list .member-list table tbody tr{
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.bottom-data-list .member-list table tbody tr:hover{
+  background-color: var(--grey);
+}
+.bottom-data-list .member-list table tbody tr td .task-todo{
+  font-size: 14px;
+  padding: 10px;
+  color: var(--light);
+  border-radius: 20px;
+  font-weight: 700;
+}
+.bottom-data-list .member-list table tbody tr td .task-todo.backend{
+    background-color: var(--success);
+}
+.bottom-data-list .member-list table tbody tr td .task-todo.frontend{
+  background-color: var(--warning);
+}
+.bottom-data-list .member-list table tbody tr td .task-todo.database{
+  background-color: var(--danger);
+}
+.bottom-data-list .todo-list{
+   flex-grow: 1;
+   flex-basis: 300px;
+}
+.bottom-data-list .task-list-todo{
+  width: 100%;
+}
+.bottom-data-list .task-list-todo li{
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: var(--grey);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.bottom-data-list .task-list-todo li .task-title-todo{
+  display: flex;
+  align-items: center;
+}
+.bottom-data-list .task-list-todo li .task-title-todo p{
+  margin-left: 6px;
+}
+.bottom-data-list .task-list-todo li .bx{
+  cursor: pointer;
+}
+.bottom-data-list .task-list-todo .backend{
+  border-left: 10px solid var(--success);
+}
+.bottom-data-list .task-list-todo .frontend{
+  border-left: 10px solid var(--warning);
+}
+.bottom-data-list .task-list-todo .database{
+  border-left: 10px solid var(--danger);
+}

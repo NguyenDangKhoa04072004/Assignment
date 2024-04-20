@@ -10,20 +10,16 @@
 
 {% block main %}
 <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Trang Chủ</h1>
-<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào Tên Đăng Nhập</h3>
+<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào {{teacher.Name}}</h3>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Cơ Bản</h5>
 <ul>
-    <li>Họ và Tên:</li>
-    <li>Email:</li>
-    <li>Ngày Sinh:</li>
-    <li>Giới Tính:</li>
-    <li>CCCD:</li>
-    <li>SĐT:</li>
+    <li id="teacher_id">Mã số giảng viên: {{teacher.ID}}</li>
+    <li>Họ và Tên: {{teacher.Name}}</li>
+    <li>Email: {{teacher.Email}}</li>
 </ul>
 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Giáo Viên</h5>
 <ul>
-    <li>Khoa:</li>
-    <li>Ngành:</li>
-    <li>Lớp:</li>
+    <li>Trình độ: {{teacher.Level}}</li>
+    <li>Chuyên môn: {{teacher.Field}}</li>
 </ul>
 {% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'Teacher/notification.html'%}
+{% block main %}
+<h3 style="text-align: center;">Môn:&nbsp; {{course.Name}}&nbsp;({{course.ID}})</h3> <br>
+<h3 style="text-align: center;">Lớp: &nbsp; {{class.ID}}</h3>
+<hr>
+{% if student_list != None%}
+<table class="table table-hover" style="text-align: center; align-items: center; ">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Mã số sinh viên</th>
+      <th scope="col">Tên sinh viên</th>
+      <th scope="col">Thông báo riêng </th>
+      <th scope="col">Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in student_list %}
+    <tr class="table-light" id="notiInfo">
+        {% csrf_token %}
+        <th scope="row" id="id_student">{{student.Student.ID}}</th>
+        <td>{{student.Student.Name}}</td>
+        <td>
+          <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
+          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+        </td>
+        <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<button type="button" class="btn btn-info" style="align-items: center; margin-left: 630px;" data-bs-toggle="modal" data-bs-target="#sendAll"><i class='bx bxs-send'></i> Gửi tất cả</button>
+<div class="modal" id ="sendAll">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <h5 class="modal-title" >THÔNG BÁO CHO CẢ LỚP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center;" >
+          <label for="exampleInputEmail1" class="form-label mt-4" ><h5>Nội dung</h5></label>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <textarea name="" id="textAll" cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 300px;" required>
+          </textarea>
+        </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submitAll"><i class='bx bxs-send'></i> Gửi</button>
+        <button type="button" class="btn btn-secondary" style="height: 50px; width: 80px; align-items: center; justify-content: center;">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<h1 style="text-align: center;">Lớp hiện tại không có sinh viên nào</h1>
+{% endif %}
+{% endblock %}

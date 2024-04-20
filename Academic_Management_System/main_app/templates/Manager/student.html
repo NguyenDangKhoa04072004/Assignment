@@ -5,7 +5,6 @@
     <li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
     <li><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
-    <li><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
 {% endblock%}
 
 {% block main %}
@@ -19,32 +18,32 @@
   </style>
   <thead style="text-align: center;">
     <tr class="table-active">
-      <th scope="col">Mã số sinh viên</th>
-      <th scope="col">Họ và tên</th>
-      <th scope="col">Email</th>
-      <th scope="col">Ngày sinh</th>
-      <th scope="col">Ngành</th>
-      <th scope="col">Năm vào</th>
-      <th scope="col">Hành động</th>
+      <th class = "data-header" scope="col">Mã số sinh viên</th>
+      <th class = "data-header" scope="col">Họ và tên</th>
+      <th class = "data-header" scope="col">Email</th>
+      <th class = "data-header" scope="col">Ngày sinh</th>
+      <th class = "data-header" scope="col">Ngành</th>
+      <th class = "data-header" scope="col">Năm vào</th>
+      <th class = "data-header" scope="col">Hành động</th>
     </tr>
   </thead>
   <tbody style="text-align: center;" style="border: 2px black solid;">
     {% for item in List%}
     <tr class="table-active">
-      <td>{{item.ID}}</td>
-      <td>{{item.Name}}</td>
-      <td>{{item.Email}}</td>
-      <td>{{item.Date}}</td>
-      <td>{{item.Major}}</td>
-      <td>{{item.Year}}</td>
-      <td><span>
-        <button type="button" class="btn btn-info"> <a href="#"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
-        <button type="button" class="btn btn-success"><a href="#"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
-        <button type="button" class="btn btn-danger"><a href="#"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal"></i></a></button>
+      <td class="data-recording">{{item.ID}}</td>
+      <td class="data-recording">{{item.Name}}</td>
+      <td class="data-recording">{{item.Email}}</td>
+      <td class="data-recording">{{item.Date}}</td>
+      <td class="data-recording">{{item.Major}}</td>
+      <td class="data-recording">{{item.Year}}</td>
+      <td class="data-recording"><span>
+        <button type="button" class="btn btn-info"> <a href="{% url 'stdinfo' item.ID %}"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-success"><a href="{% url 'editstd' item.ID%}"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-danger"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal{{item.ID}}"></i></button>
        
       </span></td>
     </tr>
-    <div class="modal" id = "mymodal">
+    <div class="modal" id = "mymodal{{item.ID}}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -67,7 +66,7 @@
     </div>
     {% endfor %}
     <tr class="table-active" >
-      <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
+      <td colspan="7" class = "data-recording"><button type="button" class="btn btn-primary"><a href="{% url 'addstd'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
     </tr>
   </tbody>
 </table>
@@ -76,27 +75,27 @@
 <table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
   <style>
      th, td{
-        border: 2px black solid;
+        border: 2px var(--light) solid;
      }
   </style>
   <thead style="text-align: center;">
     <tr class="table-active">
       <tr class="table-active">
-        <th scope="col">Mã số sinh viên</th>
-        <th scope="col">Họ và tên</th>
-        <th scope="col">Email</th>
-        <th scope="col">Ngành</th>
-        <th scope="col">GPA</th>
-        <th scope="col">Hành động</th>
+        <th class = "data-header" scope="col">Mã số sinh viên</th>
+        <th class = "data-header" scope="col">Họ và tên</th>
+        <th class = "data-header" scope="col">Email</th>
+        <th class = "data-header" scope="col">Ngành</th>
+        <th class = "data-header" scope="col">GPA</th>
+        <th class = "data-header" scope="col">Hành động</th>
       </tr>
     </tr>
   </thead>
   <tbody style="text-align: center;" style="border: 2px black solid;">
     <tr class="table-active">
-      <td colspan="7"> <h4>No Recording</h4></td>
+      <td colspan="7" class="data-recording"> <h4>Danh sách hiện tại không có sinh viên nào</h4></td>
     </tr>
     <tr class="table-active" >
-      <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
+      <td colspan="7"><button type="button" class="btn btn-primary"><a href="{% url 'addstd'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm sinh viên</a></button></td>
     </tr>
   </tbody>
 </table>

@@ -1,0 +1,39 @@
+{% extends 'Manager/teacher.html'%}
+{% block main %}
+<a href="{% url 'teacher_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<form method="post" action="{% url 'doAddTeacher'%}">
+  {% csrf_token %}
+  <fieldset>
+    <legend style="text-align: center;"><h4>Thêm giảng viên</h4></legend>
+    {% if message != None %}
+    <h6 style="text-align: center; color: red;">{{message}}</h6>
+    {% endif %}
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Mã số giảng viên</label>
+      <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào mã số giảng viên" name="id">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Tên giảng viên</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào tên" name="name">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Địa chỉ email của giảng viên</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào email " name="email">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Trình độ</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Trình độ" name="level">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Chuyên môn</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Chuyên môn" name="field">
+    </div>
+    <div>
+      <label for="exampleInputPassword1" class="form-label mt-4">Mật khẩu</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu" autocomplete="off" name="password">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}

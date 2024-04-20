@@ -15,154 +15,143 @@
         border: 2px solid black;
     }
 </style>
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Đăng Ký Khóa Học</h1>
-<form class="d-flex">
-    <input class="form-control me-sm-2" type="search" placeholder="Mã Môn Học">
+<!-- <div class="wrapper">
+  <div class="title">
+    <h5 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white;">Đăng Ký Khóa Học</h5>
+  </div>
+  <div class="search">
+     <hr>
+     <form class="d-flex" action="{% url 'search' %}">
+    <input class="form-control me-sm-2" type="search" placeholder="Mã Môn Học" name="course_id">
     <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class='bx bx-search'></i></button>
-</form>
-Nếu Có
-<!-- <table class="table table-hover">
+    </form>
+   </div>
+    <div class="container-student">
+      <br>
+       <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Không Có Môn Học Mở !</p>
+    </div>
+    <div class="divider">
+      <hr>
+      <hr id="horizon">
+    </div>
+    <div class="title">
+      <h3 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white;">Bảng đăng ký khoá học</h3>
+    </div>
+    <div class="container-student" style="text-align: center; font-size: large; padding: 20px;">
+        Bạn chưa đăng ký môn học nào
+    </div>
+</div> -->
+<div class="wrapper">
+  <div class="title">
+    <h4 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white;">Đăng Ký Khóa Học</h4>
+  </div>
+  <div class="search">
+     <hr>
+     <form class="d-flex" action="{% url 'search' %}">
+    <input class="form-control me-sm-2" type="search" placeholder="Mã Môn Học" name="course_id">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class='bx bx-search'></i></button>
+    </form>
+   </div>
+    <div class="container-student">
+      {% if course != None %}
+      <br>
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{course.ID}} &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; {{course.Name}}
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <table class ="table table-hover" style="text-align: center;">  <!-- class=""-->
+                <thead>
+                  <tr class="table-active">
+                    <th scope="col">Lớp</th>
+                    <th scope="col">Sĩ số</th>
+                    <th scope="col">Thứ</th>
+                    <th scope="col">Tiết</th>
+                    <th scope="col">Giờ</th>
+                    <th scope="col">Phòng</th>
+                    <th scope="col">Giảng viên</th>
+                    <th scope="col">Sĩ số LT</th>
+                    <th scope="col">Đăng ký</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in class%}
+                    <tr class="table-light">
+                      <td>{{item.ID}}</td>
+                      <td>{{item.Count}}/{{item.Maxsize}}</td>
+                      <td>{{item.Time.Day}}</td>
+                      <td>{{item.Time.Period}}</td>
+                      <td>{{item.Time.Start}}-{{item.Time.End}}</td>
+                      <td>{{item.Classroom.Building}}-{{item.Classroom.Room}}</td>
+                      <td>{{item.Teacher.Name}}</td>
+                      <td>{{item.Maxsize}}</td>
+                      <td><form action="{% url 'doRegister' course.ID item.ID %}" method="get"><button type="submit" class="btn btn-primary" style="width: 60px;">Chọn</button></form></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <br>
+      <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Không tìm thấy môn học !</p>
+      {% endif %}
+    </div>
+     <div class="divider">
+     <hr>
+     <hr id="horizon">
+    </div>
+    <div class="title">
+      <h4 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: white;">Bảng đăng ký khoá học</h4>
+    </div>
+<div class="container-student" style="text-align: center; font-size: large; padding: 20px;">
+  {% if course_list == None %}
+  Bạn chưa đăng ký khoá học nào !
+  {% else %}
+  <table class ="table table-hover" style="text-align: center; color: var(--light);">  <!-- class=""-->
     <thead>
       <tr class="table-active">
-        <th scope="col">Mã Môn Học</th>
-        <th scope="col">Tên Môn Học</th>
-        <th scope="col">Số Tín Chỉ</th>
-        <th></th>
+        <th  scope="col">Mã môn học</th>
+        <th  scope="col">Tên môn học</th>
+        <th  scope="col">Lớp</th>
+        <th  scope="col">Sĩ số</th>
+        <th scope="col">Thứ</th>
+        <th  scope="col">Tiết</th>
+        <th  scope="col">Giờ</th>
+        <th  scope="col">Phòng</th>
+        <th scope="col">Giảng viên</th>
+        <th  scope="col">Sĩ số LT</th>
+        <th  scope="col">Xoá đăng ký</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="table-light" class="accordion" id="accordionExample">
-        <td>CH1003</td>
-        <td>Hóa Đại Cương</td>
-        <td>3</td>
-        <td>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  <i class='bx bxs-plus-circle'></i>
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="font-family: Verdana, Geneva, Tahoma, sans-serifs;">
-                <div class="accordion-body">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr class="table-primary">
-                        <th scope="col">Lớp</th>
-                        <th scope="col">Thứ</th>
-                        <th scope="col">Tiết</th>
-                        <th scope="col">Giờ</th>
-                        <th scope="col">Phòng</th>
-                        <th scope="col">Tuần Học</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="table-light">
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                      </tr>
-                      <tr class="table-active">
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                      </tr>
-                      <tr class="table-light">
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                      </tr>
-                      <tr class="table-active">
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-        </td>
-      </tr>
+        {% for item in course_list %}
+        <tr class="table-light">
+          <form action="{% url 'delCourse' item.Course.ID item.Class.ID %}"> <!---->
+          <td>{{item.Course.ID}}</td>
+          <td>{{item.Course.Name}}</td>
+          <td>{{item.Class.ID}}</td>
+          <td>{{item.Class.Count}}/{{item.Class.Maxsize}}</td>
+          <td>{{item.Class.Time.Day}}</td>
+          <td>{{item.Class.Time.Period}}</td>
+          <td>{{item.Class.Time.Start}}-{{item.Class.Time.End}}</td>
+          <td>{{item.Class.Classroom.Building}}-{{item.Class.Classroom.Room}}</td>
+          <td>{{item.Class.Teacher.Name}}</td>
+          <td>{{item.Class.Maxsize}}</td>
+          <td><button type="submit" class="btn btn-primary" style="width: 60px;"><i class='bx bxs-trash-alt'></i></button></td>
+        </tr>
+      </form>
+        {% endfor %}
+    
     </tbody>
-</table> -->
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        CH1003_Hóa Đại Cương
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary">
-              <th scope="col">Số tín chỉ</th>
-              <th scope="col">Lớp</th>
-              <th scope="col">Thứ</th>
-              <th scope="col">Tiết</th>
-              <th scope="col">Giờ</th>
-              <th scope="col">Phòng</th>
-              <th scope="col">Tuần Học</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="table-light">
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-            </tr>
-            <tr class="table-active">
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-            </tr>
-            <tr class="table-light">
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-            </tr>
-            <tr class="table-active">
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-              <td>Column content</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  </table>
+  {% endif %}
 </div>
-Nếu Không
-<hr>
-<p style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Không Có Môn Học Mở</p>
-<hr>
+</div>
 {% endblock %}

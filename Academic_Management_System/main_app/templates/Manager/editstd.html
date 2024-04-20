@@ -1,0 +1,51 @@
+{% extends 'Manager/student.html'%}
+{% block main %}
+<a href="{% url 'student_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<form method="post" action="{% url 'doEditStd' student.ID%}">
+  {% csrf_token %}
+  <fieldset>
+    <legend style="text-align: center;"><h4>Cập nhật sinh viên</h4></legend>
+    {% if message != None %}
+    <h6 style="text-align: center; color: red;">{{message}}</h6>
+    {% endif %}
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Tên sinh viên</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào tên" name="name" value="{{student.Name}}">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Địa chỉ email của sinh viên</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập vào email " name="email" value="{{student.Email}}">
+    </div>
+    <div>
+      <label for="exampleInputEmail1" class="form-label mt-4">Ngày sinh</label>
+      <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="date" value="{{Date}}">
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Ngành</label>
+      <select class="form-select" id="exampleSelect1" name="major" >
+        <option>----------Chọn ngành-----------</option>
+        {% for item in Major%}
+        {% if student.Major == item %}
+        <option value="{{item}}" selected >{{item}}</option>
+        {% else %}
+        <option value="{{item}}">{{item}}</option>
+        {% endif %}
+        {% endfor%}
+      </select>
+    </div>
+    <div>
+      <label for="exampleSelect1" class="form-label mt-4">Năm vào</label>
+      <select class="form-select" id="exampleSelect1" name="year">
+        {% for item in Year%}
+        {% if student.Year == Year%}
+        <option value="{{item}}" selected>{{item}}</option>
+        {% else %}
+        <option value="{{item}}">{{item}}</option>
+        {% endif%}
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit</button>
+  </fieldset>
+</form>
+{% endblock %}

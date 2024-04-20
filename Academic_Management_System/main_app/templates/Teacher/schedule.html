@@ -16,62 +16,51 @@
     }
 </style>
 <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lịch Trình Giảng Dạy</h1>
+<hr>
+{% if Schedule != None %}
+{% for item in Schedule %}
+<h4 style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{item.Course.ID}}-{{item.Course.Name}}</h4>
+<hr>
 <table class="table table-hover">
     <thead>
       <tr class="table-primary">
-        <th scope="col">Mã MH</th>
-        <th scope="col">Tên Môn Học</th>
-        <th scope="col">Tín Chỉ</th>
         <th scope="col">Lớp</th>
         <th scope="col">Thứ</th>
         <th scope="col">Tiết</th>
         <th scope="col">Giờ</th>
         <th scope="col">Phòng</th>
-        <th scope="col">Tuần Học</th>
       </tr>
     </thead>
     <tbody>
+      {% for it in item.Class %}
       <tr class="table-light">
-        <td>CH1003</td>
-        <td>Hóa Đại Cương</td>
-        <td>3</td>
-        <td>L03</td>
-        <td>Thứ Ba</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>{{it.ID}}</td>
+        <td>{{it.Time.Day}}</td>
+        <td>{{it.Time.Period}}</td>
+        <td>{{it.Time.Start}}-{{it.Time.End}}</td>
+        <td>{{it.Classroom.Building}}-{{it.Classroom.Room}}</td>
       </tr>
-      <tr class="table-active">
-        <td colspan="2" style="border-bottom: 0px;"></td>
-        <td>3</td>
-        <td>L05</td>
-        <td>Thứ Năm</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-light">
-        <td colspan="2" style="border-top: 0px; border-bottom: 0px;"></td>
-        <td>3</td>
-        <td>L07</td>
-        <td>Thứ Bảy</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-active">
-        <td colspan="2" style="border-top: 0px;"></td>
-        <td>3</td>
-        <td>L11</td>
-        <td>Thứ Tư</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
+{% endfor %}
+{% else %}
+<table class="table table-hover">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Lớp</th>
+      <th scope="col">Thứ</th>
+      <th scope="col">Tiết</th>
+      <th scope="col">Giờ</th>
+      <th scope="col">Phòng</th>
+      <th scope="col">Tuần Học</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-light">
+       <td colspan="6"><h3 style="text-align: center;"> Không có lịch trình giảng dạy nào </h3></td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
 {% endblock %}

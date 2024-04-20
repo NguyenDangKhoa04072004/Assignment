@@ -1,11 +1,102 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="vi">
-   <head> 
-        <meta charset="UTF-8"> 
-       <title>AMS</title>
-   </head>
-   <body>
-      <h1>Đây là trang đăng nhập</h1>
-      <button>Đăng nhập</button>
-   </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style2.css'%}">
+    <title>Modern Login Page | AsmrProg</title>
+</head>
+
+<body>
+  {% if active %}
+    <div class="container active" id="container">
+        <div class="form-container sign-up">
+            <form method="post" action="">
+               {% csrf_token %}
+                <h1>Đăng nhập cho quản trị viên</h1>
+                <input type="email" placeholder="Địa chỉ email" name="email">
+                <input type="password" placeholder="Mật khẩu" name="password">
+                {% if message_admin != None %}
+                  <span>{{message_admin}}</span>
+                {% endif%}
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form method="post" action="{% url 'doLogin' %}">
+               {% csrf_token %}
+                <h1>Đăng nhập cho sinh viên / giảng viên</h1>
+                <input type="email" placeholder="Địa chỉ email" name="email">
+                <input type="password" placeholder="Mật khẩu" name="password">
+                {% if message != None %}
+                  <span>{{message}}</span>
+                {% endif%}
+                <a href="#">Quên mật khẩu ?</a>
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Đăng nhập dành cho sinh viên / giảng viên</h1>
+                    <p>Chỉ dành cho sinh viên hoặc giảng viên</p>
+                    <button class="hidden" id="login">Chuyển đổi</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Đăng nhập dành cho quản trị viên</h1>
+                    <p>Chỉ dành cho quản trị viên</p>
+                    <button class="hidden" id="register">Chuyển đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form method="post" action="{% url 'adminLogin'%}">
+               {% csrf_token %}
+                <h1>Đăng nhập cho quản trị viên</h1>
+                <input type="email" placeholder="Địa chỉ email" name="email">
+                <input type="password" placeholder="Mật khẩu" name="password">
+                {% if message_admin != None %}
+                  <span>{{message_admin}}</span>
+                {% endif%}
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form method="post" action="{% url 'doLogin' %}">
+               {% csrf_token %}
+                <h1>Đăng nhập cho sinh viên / giảng viên</h1>
+                <input type="email" placeholder="Địa chỉ email" name="email">
+                <input type="password" placeholder="Mật khẩu" name="password">
+                {% if message != None %}
+                  <span>{{message}}</span>
+                {% endif%}
+                <a href="#">Quên mật khẩu ?</a>
+                <button>Đăng nhập</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Đăng nhập dành cho sinh viên / giảng viên</h1>
+                    <p>Chỉ dành cho sinh viên hoặc giảng viên</p>
+                    <button class="hidden" id="login">Chuyển đổi</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Đăng nhập dành cho quản trị viên</h1>
+                    <p>Chỉ dành cho quản trị viên</p>
+                    <button class="hidden" id="register">Chuyển đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif%}
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
 </html>

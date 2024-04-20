@@ -1,0 +1,12 @@
+{% extends 'Manager/teacher.html'%}
+{% block main %}
+<a href="{% url 'teacher_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
+<h2 style="text-align: center;">Thông tin giảng viên</h2>
+<hr style="border: 2px solid black;">
+<div>
+<h6>Mã số giảng viên:  {{teacher.ID}}</h6>
+<h6>Họ và tên :  {{teacher.Name}}</h6>
+<h6>Địa chỉ Email:  {{teacher.Email}}</h6>
+<h6>Trình độ:  {{teacher.Level}}</h6>
+<h6>Chuyên môn: {{teacher.Field}}</h6>
+{% endblock%}

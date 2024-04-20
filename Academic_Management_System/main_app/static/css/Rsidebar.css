@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+.Rsidebar {
+  position: fixed;
+  right: 0;
+  top: 56px;
+  height: 100%;
+  width: 370px;
+  background: var(--light);
+  z-index: 2000;
+  transition: all 0.4s ease;
+}
+.logo {
+  text-align: center;
+}
+.Rsidebar a {
+  color: var(--dark);
+  text-decoration: none;
+}
+.menu-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+}
+.menu-content::-webkit-scrollbar {
+  display: none;
+}
+.menu-items {
+  height: 100%;
+  width: 100%;
+  list-style: none;
+  transition: all 0.4s ease;
+}
+.submenu-active .menu-items {
+  transform: translateX(-56%);
+}
+.menu-title {
+  color: var(--dark);
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+}
+.item a,
+.submenu-item {
+  border: 0.5px solid black;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  gap: 20px;
+  align-items: center;
+}
+.submenu-item .messageInfo{
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+.submenu-item .datetime{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.submenu-item img{
+  border: 0.5px solid rgba(0, 0, 0, 0.243);
+  justify-self: flex-start;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.item i {
+  font-size: 12px;
+}
+.item a:hover,
+.submenu-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+.submenu-item {
+  justify-content: space-evenly;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: var(--dark);
+  cursor: pointer;
+}
+.submenu {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: calc(-100% - 26px);
+  height: calc(100% + 100vh);
+  background: var(--light);
+  display: none;
+}
+.show-submenu ~ .submenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 35px;
+}
+.submenu .menu-title {
+  display: flex;
+  width: 370px;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+.submenu .menu-title .title-message{
+   display: flex;
+   align-items: center;
+    justify-self: start;
+}
+.submenu .menu-title .content-message{
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+.Rsidebar.close{
+   width: 0;
+}

@@ -1,0 +1,59 @@
+{% extends 'Teacher/score.html'%}
+{% block main %}
+<h3 style="text-align: center;">Môn:&nbsp; {{course.Name}}&nbsp;({{course.ID}})</h3> <br>
+<h3 style="text-align: center;">Lớp: &nbsp; {{class.ID}}</h3>
+<hr>
+{% if student_list != None%}
+<table class="table table-hover" style="text-align: center;">
+  <thead>
+    <tr class="table-info">
+      <th scope="col">Mã số sinh viên</th>
+      <th scope="col">Tên sinh viên</th>
+      <th scope="col">Điểm Bài tập</th>
+      <th scope="col">Điểm Bài tập lớn</th>
+      <th scope="col">Điểm Thi giữa kì</th>
+      <th scope="col">Điểm Thi cuối kì</th>
+      <th scope="col">Điểm Tổng kết</th>
+      <th scope="col">Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in student_list %}
+    <tr class="table-light">
+      <form action="{% url 'scoring' student.Student.ID Course Class%}" method="post" id="submit">
+        {% csrf_token %}
+        <th scope="row">{{student.Student.ID}}</th>
+        <td>{{student.Student.Name}}</td>
+        <td>
+          <input type="number" value="{{student.Grade.Excercise_Grade}}" style="text-align: center;" name="excercise">
+        </td>
+        <td>
+          <input type="number" value="{{student.Grade.Assignment_Grade}}" style="text-align: center;" name="assignment">
+        </td>
+        <td>
+          <input type="number" value="{{student.Grade.MidTerm_Grade}}" style="text-align: center;" name="midterm">
+        </td>
+        <td>
+          <input type="number" value="{{student.Grade.FinalTerm_Grade}}" style="text-align: center;" name="finalterm"> 
+        </td>
+        <td>{{student.Grade.Final_Grade}}</td>
+        <td><button type="submit" class="btn btn-info" >Xác nhận</button></td>
+      </form>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<button type="submit" class="btn btn-info" style="align-items: center; margin-left: 630px;" id="submitAll">Xác nhận tất cả</button>
+<script>
+    const submit = document.querySelector('#submitAll')
+    submit.addEventListener('click', ()=>{
+        const submits = document.querySelectorAll('#submit')
+        submits.forEach( item => {
+            item.submit()
+        })
+    })
+</script>
+{% else %}
+<h1 style="text-align: center;">Lớp hiện tại không có sinh viên nào</h1>
+{% endif %}
+{% endblock %}

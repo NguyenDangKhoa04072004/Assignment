@@ -5,7 +5,6 @@
     <li><a href="{% url 'teacher_views' %}"><i class='bx bxs-user-account'></i>Giảng viên</a></li>
     <li class = "active"><a href="{% url 'course_views' %}"><i class='bx bxs-book'></i>Khoá học</a></li>
     <li ><a href="{% url 'notification_views' %}"><i class='bx bxs-notification' ></i>Thông báo</a></li>
-    <li><a href="{% url 'feedback_views' %}"><i class='bx bxs-bell' ></i></i>Phản hồi</a></li>
 {% endblock%}
 
 {% block main %}
@@ -19,43 +18,41 @@
   </style>
   <thead style="text-align: center;">
     <tr class="table-active">
-      <th scope="col">Mã môn học</th>
-      <th scope="col">Tên môn học</th>
-      <th scope="col">Số tin chỉ</th>
-      <th scope="col">Loại môn</th>
-      <th scope="col">Yêu cầu</th>
-      <th scope="col">Hành động</th>
+      <th class = "data-header" scope="col">Mã môn học</th>
+      <th class = "data-header" scope="col">Tên môn học</th>
+      <th class = "data-header" scope="col">Số tin chỉ</th>
+      <th class = "data-header" scope="col">Loại môn</th>
+      <th class = "data-header" scope="col">Hành động</th>
     </tr>
   </thead>
   <tbody style="text-align: center;" style="border: 2px black solid;">
     {% for item in List%}
     <tr class="table-active">
-      <td>{{item.ID}}</td>
-      <td>{{item.Name}}</td>
-      <td>{{item.Credits}}</td>
-      <td>{{item.Type}}</td>
-      <td>{{item.Requirements}}</td>
-      <td><span>
-        <button type="button" class="btn btn-info"> <a href="#"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
-        <button type="button" class="btn btn-success"><a href="#"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
-        <button type="button" class="btn btn-danger"><a href="#"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal"></i></a></button>
+      <td class="data-recording">{{item.ID}}</td>
+      <td class="data-recording">{{item.Name}}</td>
+      <td class="data-recording">{{item.Credits}}</td>
+      <td class="data-recording">{{item.Type}}</td>
+      <td class="data-recording"><span>
+        <button type="button" class="btn btn-info"> <a href="{% url 'courseinfo' item.ID %}"><i class='bx bxs-info-circle' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-success"><a href="{% url 'editCourse' item.ID%}"><i class='bx bxs-edit-alt' style="color: white;"></i></a></button>
+        <button type="button" class="btn btn-danger"><i class='bx bxs-trash-alt' style="color: white ;" data-bs-toggle="modal" data-bs-target="#mymodal{{item.ID}}"></i></button>
        
       </span></td>
     </tr>
-    <div class="modal" id = "mymodal">
+    <div class="modal" id = "mymodal{{item.ID}}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" style="color: red;">Xoá sinh viên</h5>
+            <h5 class="modal-title" style="color: red;">Xoá khoá học</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true"></span>
             </button>
           </div>
           <div class="modal-body">
-            <p style="font-weight: bolder;">Bạn có chắc chắn muốn xoá sinh viên {{item.Name}} không ?</p>
+            <p style="font-weight: bolder;">Bạn có chắc chắn muốn xoá khoá học {{item.Name}} không ?</p>
           </div>
           <div class="modal-footer">
-            <form action="#">
+            <form action="{% url 'doDelCourse' item.ID%}">
               <button type="submit" class="btn btn-danger">Chắc chắn</button>
             </form>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
@@ -65,7 +62,7 @@
     </div>
     {% endfor %}
     <tr class="table-active" >
-      <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm khoá học</a></button></td>
+      <td colspan="7" class="data-recording"><button type="button" class="btn btn-primary"><a href="{% url 'addcourse'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm khoá học</a></button></td>
     </tr>
   </tbody>
 </table>
@@ -80,21 +77,20 @@
   <thead style="text-align: center;">
     <tr class="table-active">
       <tr class="table-active">
-        <th scope="col">Mã môn học</th>
-        <th scope="col">Tên môn học</th>
-        <th scope="col">Số tin chỉ</th>
-        <th scope="col">Loại môn</th>
-        <th scope="col">Yêu cầu</th>
-        <th scope="col">Hành động</th>
+        <th class="data-recording" scope="col">Mã môn học</th>
+        <th class="data-recording" scope="col">Tên môn học</th>
+        <th class="data-recording" scope="col">Số tin chỉ</th>
+        <th class="data-recording" scope="col">Loại môn</th>
+        <th class="data-recording" scope="col">Hành động</th>
       </tr>
     </tr>
   </thead>
   <tbody style="text-align: center;" style="border: 2px black solid;">
     <tr class="table-active">
-      <td colspan="7"> <h4>No Recording</h4></td>
+      <td colspan="7" class="data-recording"> <h4>Danh sách không có khoá học nào</h4></td>
     </tr>
-    <tr class="table-active" >
-      <td colspan="7"><button type="button" class="btn btn-primary"><a href="#" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm khoá học</a></button></td>
+    <tr class="table-active" class="data-recording" >
+      <td colspan="7" class="data-recording" ><button type="button" class="btn btn-primary"><a href="{% url 'addcourse'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm khoá học</a></button></td>
     </tr>
   </tbody>
 </table>

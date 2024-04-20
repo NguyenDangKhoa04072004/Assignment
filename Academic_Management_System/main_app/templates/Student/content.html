@@ -1,0 +1,35 @@
+{% extends 'Student/course.html'%}
+{% load static %}
+{% block main %}
+<a href="{% url 'course' %}"><button type="button" class="btn btn-success", style="width: 80px; margin-bottom: 10px;"><i class='bx bx-left-arrow-alt' ></i></button></a>
+{% if Content != None %}
+<script src ="{% static 'js/content.js'%}"></script>
+{% for item in Content %}
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{item.Index}}" aria-expanded="false" aria-controls="collapse">
+        {{item.Subject}}
+      </button>
+    </h2>
+    <div id="collapse{{item.Index}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+      <div class="accordion-body" style="padding: 10px;">
+          {% if item.Content == None %}
+          <h3 style="text-align: center;">Chưa có nội dung nào </h3>
+          {% else %}
+           {% for data in item.Content %}
+           <hr>
+           <div class="content-material ">
+            <a href="{{data.URL}}"><button type="button" class="btn btn-primary" ><i class='bx bxs-file'></i></button> {{data.Title}}</a>
+           </div>
+           <hr>
+           {% endfor %}
+         {% endif %}
+      </div> 
+    </div>
+  </div>
+  {% endfor %}
+{% else %}
+<h1 style="text-align: center;">Khoá học hiện tại chưa có nội dung nào</h1>
+{% endif %}
+{% endblock %}
