@@ -74,13 +74,21 @@
                     <a href="#" class="profile"></a>
                 </button>
                 <!-- <a "></a> -->
-                <div class="dropdown-menu " style="text-align: center;">
-                    <a class="dropdown-item" href="{% url 'teacher_home' %}">Trang chủ</a>
-                    <a class="dropdown-item" href="{% url 'schedule' %}">Lịch trình</a>
-                    <a class="dropdown-item" href="{% url 'teacher_course' %}">Khoá học</a>
-                    <a class="dropdown-item" href="{% url 'score' %}">Nhập điểm</a>
-                    <a class="dropdown-item" href="{% url 'notification' %}">Thông báo</a>
-                  <a class="dropdown-item" id="logout" href="{% url 'logout'%}" style="color: red;">Đăng xuất</a>
+                <div class="dropdown-menu " style="text-align: center; order: 1; ">
+                    <div style="border: 1px solid #dfdfdf; border-radius: 10px; padding: 10px; ">
+                        <a class="dropdown-item" href="{% url 'teacher_home' %}">Trang chủ</a>
+                        <hr>
+                        <a class="dropdown-item" href="{% url 'schedule' %}">Lịch trình</a>
+                        <hr>
+                        <a class="dropdown-item" href="{% url 'teacher_course' %}">Khoá học</a>
+                        <hr>
+                        <a class="dropdown-item" href="{% url 'score' %}">Nhập điểm</a>
+                        <hr>
+                        <a class="dropdown-item" href="{% url 'notification' %}">Thông báo</a>
+                        <hr>
+                      <a class="dropdown-item" id="logout" href="{% url 'logout'%}" style="color: red;">Đăng xuất</a>
+                      <hr>
+                    </div>
                 </div>
               </li>
         </nav>

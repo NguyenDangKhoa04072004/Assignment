@@ -23,11 +23,14 @@ def tkb(request):
           'Credits':0 if tkb == None else tkb['Credits']
       })
 def register(request):
+    print(Student.get_course(request.session['student_id']))
     return render(request, 'Student/register.html',{
+       'default' : True,
        'course_list': Student.get_course(request.session['student_id'])
     })
 def search(request):
     return render(request,'Student/register.html',{
+      'default' : False,
       'course':Course.getCourse(request.GET['course_id']),
       'class': Class.all(request.GET['course_id']),
       'course_list': Student.get_course(request.session['student_id'])

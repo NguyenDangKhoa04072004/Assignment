@@ -9,29 +9,32 @@
 {% endblock %}
 {% block main %}
 
-<h1 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Thời Khóa Biểu</h1>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Thời Khoá Biểu</h1>
 
-<table class="table table-hover">
+<table class="table table-hover" style="border: #dfdfdf;">
   <style>
-    th, td {
-      border: 2px solid black;
+    th {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-left: 1px solid #dfdfdf;
     }
     p {
       font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
+    .data-header{
+      border-left: 1px solid #dfdfdf;
+    }
   </style>
   <thead>
     <tr class="table-primary">
-      <th scope="col">Mã MH</th>
-      <th scope="col">Tên Môn Học</th>
-      <th scope="col">Tín Chỉ</th>
-      <th scope="col">Lớp</th>
-      <th scope="col">Thứ</th>
-      <th scope="col">Tiết</th>
-      <th scope="col">Giờ</th>
-      <th scope="col">Phòng</th>
-      <th scope="col">Cơ sở</th>
+      <th class="data-header"scope="col">Mã HP</th>
+      <th class="data-header"scope="col">Học Phần</th>
+      <th class="data-header" scope="col">Tín Chỉ</th>
+      <th class="data-header"scope="col">Lớp</th>
+      <th class="data-header" scope="col">Thứ</th>
+      <th class="data-header" scope="col">Tiết</th>
+      <th class="data-header" scope="col">Giờ</th>
+      <th class="data-header" scope="col">Phòng</th>
+      <th class="data-header" scope="col">Cơ sở</th>
     </tr>
   </thead>
   <tbody>
@@ -50,12 +53,12 @@
     </tr>
     {% endfor %}
     {% else %}
-    <td colspan="9" style="text-align: center;"><strong>Không có thời khoá biểu</strong></td>
+    <td colspan="9" style="text-align: center; height: 40px;"></td>
     {% endif %}
   </tbody>
 </table>
-<hr>
-<p style="margin-bottom: 10px;">Tổng Số Môn: {{Count}}</p>
-<p>Tổng Số Tín Chỉ: {{Credits}}</p>
+<hr style="margin-bottom: 10px;">
+<p style="margin-bottom: 10px; margin-left: 10px; color: #58585b; font-weight: light;" > <span style="font-weight: bold;">Tổng Số Môn : </span> {{Count}}</p>
+<p style="margin-bottom: 10px; margin-left: 10px; color: #58585b; font-weight: light;"><span style="font-weight: bold;">Tổng Số Tín Chỉ : </span> {{Credits}}</p>
 <hr>
 {% endblock %}

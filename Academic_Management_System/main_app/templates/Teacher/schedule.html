@@ -10,18 +10,23 @@
 
 {% block main %}
 <style>
-    th, td {
-      border: 2px solid black;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
+  th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-left: 1px solid #dfdfdf;
+  }
+  p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .data-header{
+    border-left: 1px solid #dfdfdf;
+  }
 </style>
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Lịch Trình Giảng Dạy</h1>
-<hr>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Lịch Trình Giảng Dạy</h1>
+
 {% if Schedule != None %}
 {% for item in Schedule %}
-<h4 style=" font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{item.Course.ID}}-{{item.Course.Name}}</h4>
-<hr>
-<table class="table table-hover">
+<h1 style=" font-size: 25px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b;">{{item.Course.ID}} - {{item.Course.Name}}</h1>
+<table class="table table-hover" style="margin-top: 10px;">
     <thead>
       <tr class="table-primary">
         <th scope="col">Lớp</th>
@@ -58,7 +63,7 @@
   </thead>
   <tbody>
     <tr class="table-light">
-       <td colspan="6"><h3 style="text-align: center;"> Không có lịch trình giảng dạy nào </h3></td>
+       <td colspan="6" style="height: 40px;"></td>
     </tr>
   </tbody>
 </table>

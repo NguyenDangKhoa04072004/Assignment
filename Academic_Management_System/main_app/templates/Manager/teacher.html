@@ -9,15 +9,22 @@
 
 {% block main %}
 {% if List != None %}
-<h1 style="text-align: center;"> Danh sách giảng viên</h1>
-<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Danh Sách Giảng Viên</h1>
+<table class="table table-hover" style="border: 1px #dfdfdf solid; border-collapse: collapse; ">
   <style>
-     th, td{
-        border: 2px black solid;
-     }
+    th {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-left: 1px solid #dfdfdf;
+    }
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .data-header{
+      border-left: 1px solid #dfdfdf;
+    }
   </style>
-  <thead style="text-align: center;">
-    <tr class="table-active">
+  <thead>
+    <tr class="table-primary">
       <th class = "data-header" scope="col">Mã số giảng viên</th>
       <th class = "data-header" scope="col">Họ và tên</th>
       <th class = "data-header" scope="col">Email</th>
@@ -26,9 +33,9 @@
       <th class = "data-header" scope="col">Hành động</th>
     </tr>
   </thead>
-  <tbody style="text-align: center;" style="border: 2px black solid;">
+  <tbody>
     {% for item in List %}
-    <tr class="table-active">
+    <tr class="table-light">
       <td class="data-recording">{{item.ID}}</td>
       <td class="data-recording">{{item.Name}}</td>
       <td class="data-recording">{{item.Email}}</td>
@@ -63,17 +70,13 @@
       </div>
     </div>
     {% endfor %}
-    <tr class="table-active" >
-      <td colspan="7" class = "data-recording"><button type="button" class="btn btn-primary"><a href="{% url 'addteacher'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm giảng viên</a></button></td>
-    </tr>
   </tbody>
 </table>
-
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-primary"><a href="{% url 'addteacher'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm giảng viên</a></button></div>
 {% else %}
-<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
-  <thead style="text-align: center;">
-    <tr class="table-active">
-      <tr class="table-active">
+<table class="table table-hover" style="border: 1px #dfdfdf solid; border-collapse: collapse; ">
+  <thead>
+      <tr class="table-primary">
         <th class = "data-header" scope="col">Mã số giảng viên</th>
         <th class = "data-header" scope="col">Họ và tên</th>
         <th class = "data-header" scope="col">Email</th>
@@ -81,16 +84,14 @@
         <th class = "data-header" scope="col">Chuyên môn</th>
         <th class = "data-header" scope="col">Hành động</th>
       </tr>
-    </tr>
   </thead>
-  <tbody style="text-align: center;" style="border: 2px black solid;">
-    <tr class="table-active">
-      <td colspan="7" class="data-recording"> <h4>Danh sách không có giảng viên nào</h4></td>
+  <tbody>
+    <tr class="table-light">
+      <td colspan="7" class="data-recording" style="height: 40px;"></td>
     </tr>
-    <tr class="table-active" >
-      <td colspan="7" class="data-recording"><button type="button" class="btn btn-primary"><a href="{% url 'addteacher'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm giảng viên</a></button></td>
-    </tr>
+
   </tbody>
 </table>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-primary"><a href="{% url 'addteacher'%}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm giảng viên</a></button></div>
 {% endif %}
 {% endblock %}

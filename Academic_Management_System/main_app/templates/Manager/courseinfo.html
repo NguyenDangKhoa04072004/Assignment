@@ -8,7 +8,7 @@
 <h4 style="text-align: center;">Loại môn học: {{course.Type}}</h4>
 <hr>
 {% if CLass_List == None %}
-<h3 style="text-align: center;"> Danh sách lớp học</h3>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Danh Sách Lớp Học</h1>
 <table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
   <style>
      th, td{
@@ -38,15 +38,22 @@
   </tbody>
 </table>
 {% else %}
-<h1 style="text-align: center;"> Danh sách lớp học</h1>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Danh Sách Lớp Học</h1>
 <table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
   <style>
-     th, td{
-        border: 2px black solid;
-     }
+    th {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-left: 1px solid #dfdfdf;
+    }
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .data-header{
+      border-left: 1px solid #dfdfdf;
+    }
   </style>
-  <thead style="text-align: center;">
-    <tr class="table-active">
+  <thead>
+    <tr class="table-primary">
       <th class = "data-header" scope="col">Lớp</th>
       <th class = "data-header" scope="col">Giảng viên</th>
       <th class = "data-header" scope="col">Thứ</th>
@@ -58,9 +65,9 @@
       <th class = "data-header" scope="col">Hành động</th>
     </tr>
   </thead>
-  <tbody style="text-align: center;" style="border: 2px black solid;">
+  <tbody>
     {% for item in CLass_List%}
-    <tr class="table-active">
+    <tr class="table-light">
       <td class="data-recording">{{item.ID}}</td>
       <td class="data-recording">{{item.Teacher.Name}}</td>
       <td class="data-recording">{{item.Time.Day}}</td>
@@ -96,10 +103,8 @@
       </div>
     </div>
     {% endfor %}
-    <tr class="table-active" >
-      <td colspan="9"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></td>
-    </tr>
   </tbody>
 </table>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></div>
 {% endif %}
 {% endblock %}

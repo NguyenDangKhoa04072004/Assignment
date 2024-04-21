@@ -23,7 +23,7 @@
 }
 
 .bx{
-    font-size: 1.7rem;
+    font-size: 20px;
 }
 
 a{
@@ -157,7 +157,7 @@ body{
 }
 
 .sidebar .side-menu li.active a{
-    color: var(--success);
+    color: #017cad;
 }
 
 .sidebar.close .side-menu li a{
@@ -315,7 +315,7 @@ body{
 
 .content main{
     width: 100%;
-    padding: 36px 24px;
+    padding: 20px 25px;
     max-height: calc(100vh - 56px);
 }
 

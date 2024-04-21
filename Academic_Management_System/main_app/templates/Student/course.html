@@ -9,23 +9,25 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Khóa Học Của Tôi</h1>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b;">Khóa Học Của Tôi</h1>
 <div>
   <style>
     p {
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      border: 2px solid black;
-      padding: 10px;
-      background-color: white;
+      font-family:'Courier New', Courier, monospace;
+      border: 1px solid #dfdfdf;
+      border-radius: 8px;
+      width: 600px;
+      padding: 8px;
+      background-color: #dfdfdf;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
   </style>
-  <hr>
   {% if courses != None %}
   {% for item in courses %}
   <p>
-    <a href="{% url 'content_student' item.Course.ID item.Class.ID%}" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{item.Class.Teacher.Name}}_[{{item.Class.ID}}]</a>
+    <a style="color: #007493 ; " href="{% url 'content_student' item.Course.ID item.Class.ID%}" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{item.Class.Teacher.Name}}_[{{item.Class.ID}}]</a>
   </p>
-  <hr>
   {% endfor %}
 {% else %}
 <h3 style="text-align: center;">Không có khoá học nào</h3>

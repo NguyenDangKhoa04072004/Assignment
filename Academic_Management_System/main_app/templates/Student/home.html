@@ -9,26 +9,30 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Trang chủ</h1>
-<hr>
-<h4 style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-align: center;"> Xin Chào {{student.Name}} !!</h4>
-<hr>
-<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Cơ Bản</h5>
-<ul class="student-info">
-    <li class="item-menu">Họ và Tên: {{student.Name}}</li>
-    <li class="item-menu">Email: {{student.Email}}</li>
-    <li class="item-menu">Ngày Sinh: {{student.Date}}</li>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Trang Chủ</h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<h1 style=" font-size: 20px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Xin chào <span style="color: #017cad;">{{student.Name}}</span></h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Cơ Bản</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px; font-weight: light;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Họ và Tên :  </strong> {{student.Name}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Email :</strong> {{student.Email}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Ngày Sinh :</strong> {{student.Date}}</li>
 </ul>
-<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Sinh Viên</h5>
-<ul>
-    <li>Ngành: {{student.Major}}</li>
-    <li>Khóa: {{student.Year}}</li>
-    <li>MSSV: {{student.ID}}</li>
+<hr style="margin-top: 10px; margin-bottom: 10px; font-weight: light;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin sinh viên</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px; font-weight: light;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Ngành : </strong> {{student.Major}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;" >Khoá :</strong> {{student.Year}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">MSSV :</strong> {{student.ID}}</li>
 </ul>
-<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Kết quả học tập</h5>
-<ul>
-    <li>Số tín chỉ tích luỹ: {{student.Credits}}</li>
-    <li>Điểm trung bình tích luỹ: {{student.GPA}}</li>
-
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Kết quả học tập</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Số tín chỉ : </strong> {{student.Credits}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Điểm trung bình tích luỹ :</strong> {{student.GPA}}</li>
 </ul>
 {% endblock %}

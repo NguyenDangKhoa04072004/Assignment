@@ -9,17 +9,25 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Khóa Học Của Tôi</h1>
+<style>
+    p {
+      font-family:'Courier New', Courier, monospace;
+      border: 1px solid #dfdfdf;
+      border-radius: 8px;
+      width: 600px;
+      padding: 8px;
+      background-color: #dfdfdf;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b;">Khóa Học Của Tôi</h1>
 <div>
     {% if course != None %}
     {% for item in course %}
-    {% for  it in item.Class%}
-    <hr>
-    <p style="font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border: 2px solid var(--dark);
-    padding: 10px;
-    background-color: var(--light);">
-      <a href="{% url 'content' item.Course.ID it.ID %}" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{Teacher.Name}}_{{it.ID}}</a>
+    {% for  it in item.Class %}
+    <p>
+      <a style="color: #007493 ; " href="#" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{Teacher.Name}}_{{it.ID}}</a>
     </p>
     {% endfor %}
     {% endfor %}

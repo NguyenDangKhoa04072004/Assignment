@@ -9,17 +9,23 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Trang Chủ</h1>
-<h3 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Xin Chào {{teacher.Name}}</h3>
-<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Cơ Bản</h5>
-<ul>
-    <li id="teacher_id">Mã số giảng viên: {{teacher.ID}}</li>
-    <li>Họ và Tên: {{teacher.Name}}</li>
-    <li>Email: {{teacher.Email}}</li>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Trang Chủ</h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<h1 style=" font-size: 20px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Xin chào <span style="color: #017cad;">{{teacher.Name}}</span></h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Cơ Bản</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong>Mã số giảng viên: </strong> {{teacher.ID}}</li>
+    <li class="item-menu"><strong>Họ và tên:</strong> {{teacher.Name}}</li>
+    <li class="item-menu"><strong>Email:</strong> {{teacher.Email}}</li>
 </ul>
-<h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Thông Tin Giáo Viên</h5>
-<ul>
-    <li>Trình độ: {{teacher.Level}}</li>
-    <li>Chuyên môn: {{teacher.Field}}</li>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Giảng Viên</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong>Trình độ: </strong> {{teacher.Level}}</li>
+    <li class="item-menu"><strong>Chuyên môn:</strong> {{teacher.Field}}</li>
 </ul>
+
 {% endblock %}

@@ -1,15 +1,27 @@
 {% extends 'Manager/student.html'%}
 {% block main %}
-<a href="{% url 'student_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
-<h2 style="text-align: center;">Thông tin sinh viên</h2>
-<hr style="border: 2px solid black;">
-<div>
-<h6>Mã số sinh viên:  {{student.ID}}</h6>
-<h6>Họ và tên:  {{student.Name}}</h6>
-<h6>Địa chỉ Email:  {{student.Email}}</h6>
-<h6>Ngày tháng năm sinh:  {{student.Date}}</h6>
-<h6>Ngành học: {{student.Major}}</h6>
-<h6>Năm vào: {{student.Year}}</h6>
-<h6>Điểm trung bình tích luỹ: {{student.GPA}}</h6>
-<h6>Số tín chỉ tích luỹ: {{student.Credits}}</h6>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Thông Tin Sinh Viên</h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Cơ Bản</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px; font-weight: light;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Họ và Tên :  </strong> {{student.Name}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Email :</strong> {{student.Email}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Ngày Sinh :</strong> {{student.Date}}</li>
+</ul>
+<hr style="margin-top: 10px; margin-bottom: 10px; font-weight: light;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin sinh viên</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px; font-weight: light;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Ngành : </strong> {{student.Major}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;" >Khoá :</strong> {{student.Year}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">MSSV :</strong> {{student.ID}}</li>
+</ul>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Kết quả học tập</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong style="font-weight: bold;">Số tín chỉ : </strong> {{student.Credits}}</li>
+    <li class="item-menu"><strong style="font-weight: bold;">Điểm trung bình tích luỹ :</strong> {{student.GPA}}</li>
+</ul>
 {% endblock%}

@@ -154,15 +154,15 @@ class Student():
      else:
         return False
   def get_course(student_id):
-     class_list = db.child('Student').child(student_id).child('Class_list').get().each()
+     class_list = db.child('Student').child(student_id).child('Class_list').get().val()
      if class_list == None:
         return None
      else:
        list = []
        for item in class_list:
           list.append({
-             'Class':db.child('Class').child(item.val()['Course']).child(item.val()['Class']).get().val(),
-             'Course': db.child('Course').child(item.val()['Course']).get().val()         
+             'Class':db.child('Class').child(item['Course']).child(item['Class']).get().val(),
+             'Course': db.child('Course').child(item['Course']).get().val()         
              })
        return list
   def get_timetable(student_id):
@@ -182,6 +182,8 @@ class Student():
   def delete_course(student_id , course_id, class_id):
      class_list = db.child('Student').child(student_id).child('Class_list').get().val()
      student_list = db.child('Class').child(course_id).child(class_id).child('Student_list').get().val()
+     if student_list == None:
+        return None
      for item in class_list:
         if item['Course'] == course_id and item['Class'] == class_id:
            class_list.remove(item)
@@ -493,3 +495,8 @@ class Content():
 class Message():
    def all():
       return db.child('Message').child('General').get().val()
+
+
+
+
+print(Student.get_course(2211618))

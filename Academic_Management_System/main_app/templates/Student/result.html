@@ -9,25 +9,28 @@
 {% endblock%}
 
 {% block main %}
-<h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Bảng Điểm</h1>
-<table class="table table-hover"  style="text-align: center;">
-    <style>
-        th, td {
-          border: 2px solid black;
-          font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-        p {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-    </style>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Bảng Điểm</h1>
+<style>
+  th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-left: 1px solid #dfdfdf;
+  }
+  p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .data-header{
+    border-left: 1px solid #dfdfdf;
+  }
+</style>
+<table class="table table-hover">
     <thead>
       <tr class="table-primary">
-        <th scope="col">Mã MH</th>
-        <th scope="col">Tên Môn Học</th>
-        <th scope="col">Số TC</th>
-        <th scope="col">Điểm Thành Phần</th>
-        <th scope="col">Điểm Thi</th>
-        <th scope="col">Điểm Tổng Kết</th>
+        <th class="data-header" scope="col">Mã MH</th>
+        <th class="data-header" scope="col">Tên Môn Học</th>
+        <th class="data-header" scope="col">Số TC</th>
+        <th class="data-header" scope="col">Điểm Thành Phần</th>
+        <th class="data-header" scope="col">Điểm Thi</th>
+        <th class="data-header" scope="col">Điểm Tổng Kết</th>
       </tr>
     </thead>
     <tbody>
@@ -38,9 +41,9 @@
         <td>{{item.Course.Name}}</td>
         <td>{{item.Course.Credits}}</td>
         <td style="text-align: left;">
-          BT:{{item.Grade.Excercise_Grade}} <br> 
-          BTL:{{item.Grade.Assignment_Grade}} <br>
-          KT:{{item.Grade.MidTerm_Grade}} <br>
+          BT:{{item.Grade.Excercise_Grade}} &nbsp; &nbsp; &nbsp; &nbsp;
+          BTL:{{item.Grade.Assignment_Grade}} &nbsp; &nbsp; &nbsp; &nbsp;
+          KT:{{item.Grade.MidTerm_Grade}} 
         </td>
         <td>{{item.Grade.FinalTerm_Grade}}</td>
         <td>{{item.Grade.Final_Grade}}</td>
@@ -51,9 +54,9 @@
       {% endif %}
     </tbody>
 </table>
-<hr>
-<p>Số Tín Chỉ tích lũy được: {{Student.Credits}}</p>
-<hr>
-<p>Điểm Trung Bình Tích Lũy: {{Student.GPA}}</p>
+<hr style="margin-bottom: 10px;">
+<p style="margin-left: 10px; margin-bottom: 10px; color: #58585b;"><strong style="color: #39393b;">Số Tín Chỉ tích lũy được :</strong> {{Student.Credits}}</p>
+<hr style="margin-bottom: 10px;">
+<p style="margin-left: 10px; margin-bottom: 10px; color: #58585b;"><strong style="color: #39393b;">Điểm Trung Bình Tích Lũy :</strong> {{Student.GPA}}</p>
 <hr>
 {% endblock %}
