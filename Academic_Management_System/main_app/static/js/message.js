@@ -191,7 +191,7 @@ function addMessage(name,title,content,date){
       <div>
           <div class="messageInfo">
               <div style = "width: 150px; text-align: center;" ><h6>${name}</h6></div>
-              <div>${content.substring(0,10)+" ....."}</div>
+              <div></div>
           </div>
       </div>
       <div class="datetime">
