@@ -1,10 +1,23 @@
 {% extends 'Teacher/notification.html'%}
 {% block main %}
-<h3 style="text-align: center;">Môn:&nbsp; {{course.Name}}&nbsp;({{course.ID}})</h3> <br>
-<h3 style="text-align: center;">Lớp: &nbsp; {{class.ID}}</h3>
-<hr>
+<style>
+  th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-left: 1px solid #dfdfdf;
+  }
+  p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .data-header{
+    border-left: 1px solid #dfdfdf;
+  }
+</style>
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+  <li class="item-menu"> <strong>Môn : </strong> {{course.Name}}&nbsp;({{course.ID}})</li>
+  <li class="item-menu"><strong>Lớp : </strong> {{class.ID}}</li>
+</ul>
 {% if student_list != None%}
-<table class="table table-hover" style="text-align: center; align-items: center; ">
+<table class="table table-hover">
   <thead>
     <tr class="table-primary">
       <th scope="col">Mã số sinh viên</th>
@@ -21,14 +34,14 @@
         <td>{{student.Student.Name}}</td>
         <td>
           <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
-          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px; border-radius: 10px;"></textarea>
         </td>
-        <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+        <td><button type="button" class="btn btn-info" style="width: 90px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;" id="submit"><i class='bx bxs-send'></i></button></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<button type="button" class="btn btn-info" style="align-items: center; margin-left: 630px;" data-bs-toggle="modal" data-bs-target="#sendAll"><i class='bx bxs-send'></i> Gửi tất cả</button>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-info" style="width: 130px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#sendAll"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
 <div class="modal" id ="sendAll">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

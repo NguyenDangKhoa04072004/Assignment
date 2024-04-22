@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/Rsidebar.css'%}">
     <link rel="stylesheet" href="{% static 'css/homeAdmin.css'%}">
+    <link rel="stylesheet" href="{% static 'css/content.css'%}">
     <title>AMS</title>
     <link rel="stylesheet" href="{% static 'css/student.css'%}">
     <link rel="icon" type="images/png" href="{% static 'images/graduation-hat.png' %}">
@@ -68,7 +69,7 @@
             <form action="#">
             </form>
             <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <label for="theme-toggle" class="theme-toggle"></label> -->
             <button style="border: none; background: none;" id="sidebar-close" type="button">
                 <a href="#" class="notif" >
                     <i class='bx bxs-bell-ring'></i>
@@ -80,7 +81,7 @@
                     <a href="#" class="profile"></a>
                 </button>
                 <!-- <a "></a> -->
-                <div class="dropdown-menu " style="text-align: center;">
+                <div class="dropdown-menu " style="text-align: center; text-align: center; order: 1; border-radius: 20px; padding: 10px; background-color: rgba(241, 240, 240, 0.753);">
                     <a class="dropdown-item"  href="{% url 'student_home' %}">Trang chủ</a>
                     <a class="dropdown-item" href="{% url 'tkb' %}">Thời Khóa Biểu</a>
                     <a class="dropdown-item" href="{% url 'register_course' %}">Đăng Ký Khóa Học</a>

@@ -62,7 +62,7 @@
             <form action="#">
             </form>
             <input type="checkbox" id="theme-toggle" hidden>
-            <label for="theme-toggle" class="theme-toggle"></label>
+            <!-- <label for="theme-toggle" class="theme-toggle"></label> -->
             <button style="border: none; background: none;" id="sidebar-close" type="button">
                 <a href="#" class="notif" >
                     <i class='bx bxs-bell-ring'></i>
@@ -74,21 +74,13 @@
                     <a href="#" class="profile"></a>
                 </button>
                 <!-- <a "></a> -->
-                <div class="dropdown-menu " style="text-align: center; order: 1; ">
-                    <div style="border: 1px solid #dfdfdf; border-radius: 10px; padding: 10px; ">
+                <div class="dropdown-menu " style="text-align: center; order: 1; border-radius: 20px; padding: 10px; background-color: rgba(241, 240, 240, 0.753);">
                         <a class="dropdown-item" href="{% url 'teacher_home' %}">Trang chủ</a>
-                        <hr>
                         <a class="dropdown-item" href="{% url 'schedule' %}">Lịch trình</a>
-                        <hr>
                         <a class="dropdown-item" href="{% url 'teacher_course' %}">Khoá học</a>
-                        <hr>
                         <a class="dropdown-item" href="{% url 'score' %}">Nhập điểm</a>
-                        <hr>
                         <a class="dropdown-item" href="{% url 'notification' %}">Thông báo</a>
-                        <hr>
                       <a class="dropdown-item" id="logout" href="{% url 'logout'%}" style="color: red;">Đăng xuất</a>
-                      <hr>
-                    </div>
                 </div>
               </li>
         </nav>
@@ -101,6 +93,7 @@
         </main>
 
     </div>
+    <script src="{% static 'js/content.js'%}" type="module"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/Rsidebar.js'%}"></script>
     <script src="{% static 'js/message.js'%}" type="module"></script>

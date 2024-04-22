@@ -1,23 +1,36 @@
 {% extends 'Manager/course.html' %}
 {% block main %}
 <a href="{% url 'course_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
-<h1 style="text-align: center;">Thông tin khoá học</h1>
+<!-- <h1 style="text-align: center;">Thông tin khoá học</h1>
 <h4 style="text-align: center;">Mã môn học: {{course.ID}}</h4>
 <h4 style="text-align: center;">Tên môn học: {{course.Name}}</h4>
 <h4 style="text-align: center;">Số tín chỉ: {{course.Credits}}</h4>
-<h4 style="text-align: center;">Loại môn học: {{course.Type}}</h4>
-<hr>
+<h4 style="text-align: center;">Loại môn học: {{course.Type}}</h4> -->
+<h1 style=" font-size: 25px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; margin-top: 10px;color: #39393b;">Thông Tin Khoá Học</h1>
+<ul class="student-info" style="color: #58585b; padding-left: 10px; font-weight: light;">
+  <li class="item-menu"> <strong style="font-weight: bold;">Mã môn học : </strong>{{course.ID}}</li>
+  <li class="item-menu"><strong style="font-weight: bold;" >Tên môn học : </strong>{{course.Name}}</li>
+  <li class="item-menu"><strong style="font-weight: bold;">Số tín chỉ : </strong> {{course.Credits}}</li>
+  <li class="item-menu"><strong style="font-weight: bold;">Loại môn học : </strong> {{course.Type}}</li>
+</ul>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
 {% if CLass_List == None %}
 <h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Danh Sách Lớp Học</h1>
-<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+<table class="table table-hover" style="border: 1px #dfdfdf solid; border-collapse: collapse; ">
   <style>
-     th, td{
-        border: 2px black solid;
-     }
+    th {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-left: 1px solid #dfdfdf;
+    }
+    p {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .data-header{
+      border-left: 1px solid #dfdfdf;
+    }
   </style>
-  <thead style="text-align: center;">
-    <tr class="table-active">
-      <tr class="table-active">
+  <thead>
+        <tr class="table-primary">
         <th scope="col">Lớp</th>
         <th scope="col">Giảng viên</th>
         <th scope="col">Thứ</th>
@@ -25,21 +38,18 @@
         <th scope="col">Giờ</th>
         <th scope="col">Phòng</th>
         <th scope="col">Sĩ số</th>
-      </tr>
     </tr>
   </thead>
-  <tbody style="text-align: center;" style="border: 2px black solid;">
-    <tr class="table-active">
-      <td colspan="7"> <h4>Hiện tại không có lớp nào đang mở</h4></td>
-    </tr>
-    <tr class="table-active" >
-      <td colspan="7"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></td>
+  <tbody>
+    <tr class="table-light">
+      <td colspan="7" style="text-align: center; height: 40px;"></td>
     </tr>
   </tbody>
 </table>
+<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-primary"><a href="{% url 'addclass' course.ID %}" style = "color: white;"><i class='bx bx-list-plus' ></i> Thêm lớp</a></button></div>
 {% else %}
 <h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Danh Sách Lớp Học</h1>
-<table class="table table-hover" style="border: 2px black solid; border-collapse: collapse; ">
+<table class="table table-hover" style="border: 1px #dfdfdf solid; border-collapse: collapse; ">
   <style>
     th {
       font-family: Verdana, Geneva, Tahoma, sans-serif;

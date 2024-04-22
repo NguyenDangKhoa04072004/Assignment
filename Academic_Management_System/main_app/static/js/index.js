@@ -32,35 +32,35 @@ window.addEventListener('DOMContentLoaded',() => {
     }else{
         sideBar.classList.remove('close');
     }
-    if(localStorage.getItem('theme') == 'dark'){
-        document.body.classList.add('dark');
-        document.querySelectorAll('.data-header').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.data-recording').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.content nav #dropdown .dropdown-item').forEach( item =>{
-            item.style.color = 'var(--dark)'
-            item.style.backgroundColor = 'var(--light)'
-            document.querySelector('#logout').style.color ='red'
-        })
-        toggler.checked = true;
-    }else{
-        document.body.classList.remove('dark');
-        document.querySelectorAll('.content nav #dropdown .dropdown-item').forEach( item =>{
-            item.style.color = 'var(--dark)'
-            item.style.backgroundColor = 'var(--light)'
-            document.querySelector('#logout').style.color ='red'
-        })
-    }
+//     if(localStorage.getItem('theme') == 'dark'){
+//         document.body.classList.add('dark');
+//         document.querySelectorAll('.data-header').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.data-recording').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.content nav #dropdown .dropdown-item').forEach( item =>{
+//             item.style.color = 'var(--dark)'
+//             item.style.backgroundColor = 'var(--light)'
+//             document.querySelector('#logout').style.color ='red'
+//         })
+//         toggler.checked = true;
+//     }else{
+//         document.body.classList.remove('dark');
+//         document.querySelectorAll('.content nav #dropdown .dropdown-item').forEach( item =>{
+//             item.style.color = 'var(--dark)'
+//             item.style.backgroundColor = 'var(--light)'
+//             document.querySelector('#logout').style.color ='red'
+//         })
+//     }
     window.addEventListener('load', () =>{
         sideBar.style.display = ""
     })
-})
-menuBar.addEventListener('click', () => {
+    })
+    menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');
     if(sideBar.classList.contains('close')){
         localStorage.setItem('sidebarState','close')
@@ -68,9 +68,9 @@ menuBar.addEventListener('click', () => {
         localStorage.setItem('sidebarState','open')
     }
 });
-const searchBtn = document.querySelector('.content nav form .form-input button');
-const searchBtnIcon = document.querySelector('.content nav form .form-input button .bx');
-const searchForm = document.querySelector('.content nav form');
+// const searchBtn = document.querySelector('.content nav form .form-input button');
+// const searchBtnIcon = document.querySelector('.content nav form .form-input button .bx');
+// const searchForm = document.querySelector('.content nav form');
 
 
 
@@ -82,38 +82,38 @@ const searchForm = document.querySelector('.content nav form');
 //     }
 // });
 
-const toggler = document.getElementById('theme-toggle');
+// const toggler = document.getElementById('theme-toggle');
 
-toggler.addEventListener('change', function () {
-    if (this.checked) {
-        document.body.classList.add('dark');
-        document.querySelectorAll('.data-header').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.data-recording').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
-            item.style.color = 'var(--dark)'
-            item.style.backgroundColor = 'var(--light)'
-        })
-        localStorage.setItem('theme','dark')
-    } else {
-        document.body.classList.remove('dark');
-        document.querySelectorAll('.data-header').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.data-recording').forEach( item =>{
-            item.style.border = '2px var(--dark) solid'
-            item.style.color = 'var(--dark)'
-        })
-        document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
-            item.style.color = 'var(--dark)'
-            item.style.backgroundColor = 'var(--light)'
-        })
-        localStorage.setItem('theme','light')
-    }
-});
+// toggler.addEventListener('change', function () {
+//     if (this.checked) {
+//         document.body.classList.add('dark');
+//         document.querySelectorAll('.data-header').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.data-recording').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
+//             item.style.color = 'var(--dark)'
+//             item.style.backgroundColor = 'var(--light)'
+//         })
+//         localStorage.setItem('theme','dark')
+//     } else {
+//         document.body.classList.remove('dark');
+//         document.querySelectorAll('.data-header').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.data-recording').forEach( item =>{
+//             item.style.border = '2px var(--dark) solid'
+//             item.style.color = 'var(--dark)'
+//         })
+//         document.querySelectorAll('.content nav #dropdown a:not(#logout)').forEach( item =>{
+//             item.style.color = 'var(--dark)'
+//             item.style.backgroundColor = 'var(--light)'
+//         })
+//         localStorage.setItem('theme','light')
+//     }
+// });

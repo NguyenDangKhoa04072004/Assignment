@@ -10,7 +10,7 @@
 
 {% block main %}
 <style>
-  p {
+  .content-info{
     font-family:'Courier New', Courier, monospace;
     border: 1px solid #dfdfdf;
     border-radius: 8px;
@@ -26,8 +26,8 @@
   {% if course != None %}
   {% for item in course %}
   {% for  it in item.Class %}
-  <p>
-    <a style="color: #007493 ; " href="#" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{Teacher.Name}}_{{it.ID}}</a>
+  <p class="content-info">
+    <a style="color: #007493 ; " href="{% url 'studentList' item.Course.ID it.ID %}" target="_blank">{{item.Course.Name}}({{item.Course.ID}})_{{Teacher.Name}}_{{it.ID}}</a>
   </p>
   {% endfor %}
   {% endfor %}

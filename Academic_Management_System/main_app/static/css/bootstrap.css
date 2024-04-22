@@ -3709,12 +3709,14 @@ textarea.form-control-lg {
   text-decoration: none;
   white-space: nowrap;
   /* background-color: var(--light); */
-  border: 0;
-  border-radius: var(--bs-dropdown-item-border-radius, 0);
+  border: 1px solid #dfdfdf;
+  border-radius: 10px;
 }
-.dropdown-item:hover, .dropdown-item:focus {
-  color: var(--bs-dropdown-link-hover-color);
-  background-color: var(--bs-dropdown-link-hover-bg);
+.dropdown-menu .dropdown-item:hover {
+  color: #017cad;
+  background-color: #dfdfdf;
+  font-weight: bolder;
+  font-size: larger;
 }
 .dropdown-item.active, .dropdown-item:active {
   color: var(--bs-dropdown-link-active-color);

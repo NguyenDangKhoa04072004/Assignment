@@ -1,12 +1,20 @@
 {% extends 'Manager/teacher.html'%}
 {% block main %}
 <a href="{% url 'teacher_views'%}"><button style= "width: 80px;"type="button" class="btn btn-secondary"><i class='bx bx-left-arrow-alt' style="color: black;"></i></button></a>
-<h2 style="text-align: center;">Thông tin giảng viên</h2>
-<hr style="border: 2px solid black;">
-<div>
-<h6>Mã số giảng viên:  {{teacher.ID}}</h6>
-<h6>Họ và tên :  {{teacher.Name}}</h6>
-<h6>Địa chỉ Email:  {{teacher.Email}}</h6>
-<h6>Trình độ:  {{teacher.Level}}</h6>
-<h6>Chuyên môn: {{teacher.Field}}</h6>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Thông Tin Giảng Viên</h1>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Cơ Bản</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong>Mã số giảng viên: </strong> {{teacher.ID}}</li>
+    <li class="item-menu"><strong>Họ và tên:</strong> {{teacher.Name}}</li>
+    <li class="item-menu"><strong>Email:</strong> {{teacher.Email}}</li>
+</ul>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<span style="font-family: Verdana, Geneva, Tahoma, sans-serif; color: #58585b; font-size: 22px; ">Thông Tin Giảng Viên</span>
+<hr style="margin-top: 10px; margin-bottom: 10px;">
+<ul class="student-info" style="color: #58585b; padding-left: 10px;">
+    <li class="item-menu"> <strong>Trình độ: </strong> {{teacher.Level}}</li>
+    <li class="item-menu"><strong>Chuyên môn:</strong> {{teacher.Field}}</li>
+</ul>
 {% endblock%}

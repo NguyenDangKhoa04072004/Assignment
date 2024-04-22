@@ -9,8 +9,15 @@
     font-size: 20px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     gap: 10px;
+    margin-bottom: 10px;
 }
-
+.accordion-body .content-material:hover{
+    background-color: #017cad;
+    a{
+        color: rgba(0, 0, 255, 0.871);
+        font-size: larger;
+    }
+}
 .Rsidebar .message{
     border: 1px solid black;
 }

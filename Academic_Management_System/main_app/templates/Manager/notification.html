@@ -9,6 +9,18 @@
 {% endblock%}
 
 {% block main %}
+<style>
+  th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-left: 1px solid #dfdfdf;
+  }
+  p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .data-header{
+    border-left: 1px solid #dfdfdf;
+  }
+</style>
 <h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; color: #39393b; text-align: center;">Thông Báo</h1>
 <div id="controler" style="display: flex; justify-content: center; gap:10px; align-items: center; margin-top: 10px;">
      <button data-page = "general"  data-type = "General" style="width: 100px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid ;">Chung</button>
@@ -17,7 +29,7 @@
 </div>
 <!--This is student page-->
 <div class = "Notipage" id="student_list" style="display: none; " >
-    <h1 style="text-align: center;">Danh sách sinh viên</h1>
+<h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; color: #39393b;">Danh Sách Sinh Viên</h1>
     {% if student_list != None%}
 <table class="table table-hover" style="border: 1px #dfdfdf solid;">
   <thead>
@@ -35,14 +47,14 @@
         <td>{{student.Name}}</td>
         <td>
           <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
-          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+          <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px; border-radius: 10px;"></textarea>
         </td>
-        <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+        <td><button style="width: 80px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;" id="submit"><i class='bx bxs-send'></i></button></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<div style="display: flex; justify-content: center;"><button type="button" class="btn btn-info" style="align-items: center; justify-content: center;" data-bs-toggle="modal" data-bs-target="#sendAll"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
+<div style="display: flex; justify-content: center;"><button type="button" style="width: 130px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#sendAll" ><i class='bx bxs-send'></i> Gửi tất cả</button></div>
 <div class="modal" id ="sendAll">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -90,9 +102,9 @@
 
 <!--This is teacher page-->
 <div class = "Notipage" id="teacher_list" style="display: none;">
-        <h1 style="text-align: center;">Danh sách giảng viên</h1>
+  <h1 style=" font-size: 30px ;font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500; margin-left: 10px; margin-top: 10px; margin-bottom: 10px; color: #39393b;">Danh Sách Giảng Viên</h1>
         {% if teacher_list != None%}
-    <table class="table table-hover" style="text-align: center; align-items: center; color: var(--dark);">
+    <table class="table table-hover">
       <thead>
         <tr class="table-primary" >
           <th scope="col">Mã số giảng viên</th>
@@ -108,14 +120,14 @@
             <td>{{teacher.Name}}</td>
             <td>
               <!-- <input type="textarea" value="" style="text-align: center; width: 300px;" name="excercise"> -->
-              <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px;"></textarea>
+              <textarea name=""  cols="100" rows="100" style="overflow-y: scroll; overflow-x: scroll; width: 400px; height: 60px; border-radius: 10px;"></textarea>
             </td>
-            <td><button type="button" class="btn btn-info" style="height: 50px; width: 80px; align-items: center; justify-content: center;" id="submit"><i class='bx bxs-send'></i></button></td>
+            <td><button style="width: 80px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;"  id="submit" ><i class='bx bxs-send'></i></button></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <div style="display: flex; justify-content: center;"><button type="button" class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#sendAllTeacher"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
+    <div style="display: flex; justify-content: center; margin-top: 30px;"><button style="width: 130px; height: 40px; background-color: #017cad; color: white; border-radius: 15px; border: 1px solid #dfdfdf; margin-bottom: 10px;" data-bs-toggle="modal" data-bs-target="#sendAllTeacher"><i class='bx bxs-send'></i> Gửi tất cả</button></div>
     <div class="modal" id ="sendAllTeacher">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
