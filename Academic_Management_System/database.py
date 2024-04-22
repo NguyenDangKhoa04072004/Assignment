@@ -327,8 +327,10 @@ class Course():
             })
 
     def remove(course_id):
-        db.child('Course').child(course_id).remove()
-        
+        class_list = db.child('Class').child(course_id).get().each()
+        if  class_list != None:
+           for item in class_list:
+              Class.remove(course_id,item.key())
     def getCourse(course_id):
         return db.child('Course').child(course_id).get().val()
 
