@@ -331,6 +331,7 @@ class Course():
         if  class_list != None:
            for item in class_list:
               Class.remove(course_id,item.key())
+        db.child('Course').child(course_id)
     def getCourse(course_id):
         return db.child('Course').child(course_id).get().val()
 
