@@ -396,12 +396,14 @@ class Class():
         db.child('Class').child(course_id).child(class_id).remove()
     def get_class(course_id, class_id):
         return db.child('Class').child(course_id).child(class_id).get().val()
-    def update(course_id, class_id, classroom, teacher_id, maxsize, time):
+    def update(course_id, class_id, classroom, teacher_id, maxsize, time ):
        name = db.child('Teacher').child(teacher_id).child('Name').get().val()
+       student_list = db.child('Class').child(course_id).child(class_id).child('Student_list').get().val()
        db.child('Class').child(course_id).child(class_id).update({
           'Classroom':classroom,
           'Teacher':{'ID':teacher_id, 'Name':name},
-          'Count' : 0,
+          'Student_list':student_list,
+          'Count' : len(student_list),
           'Maxsize' : maxsize,
           'Time':time,
        })
@@ -538,4 +540,3 @@ class Message():
       return db.child('Message').child('General').get().val()
 
 
-Class.remove('CO2008','L01')
