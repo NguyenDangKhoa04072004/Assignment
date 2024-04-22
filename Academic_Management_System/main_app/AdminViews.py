@@ -14,7 +14,7 @@ def home(request):
     return render(request,'Manager/home.html',{
        'Student': len(Student.all()) if Student.all() != None else 0,
        'Teacher': len(Teacher.all()) if Teacher.all() != None else 0,
-       'Course': len(Teacher.all()) if Course.all() != None else 0,
+       'Course': len(Course.all()) if Course.all() != None else 0,
     })
 def student_view(request):
     return render(request,'Manager/student.html',{

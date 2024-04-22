@@ -45,7 +45,6 @@ def notiList(request,course_id, class_id):
           'class':Class.get_class(course_id,class_id)
      })
 def studentList(request, course_id, class_id):
-     print(Class.get_studentList(course_id,class_id))
      return render(request,'Teacher/studentList.html',{
           'student_list':Class.get_studentList(course_id,class_id),
           'Course':course_id,

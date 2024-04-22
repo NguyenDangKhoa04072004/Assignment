@@ -266,6 +266,13 @@ class Teacher():
 
   def remove(teacher_id):
     user_id = db.child('Teacher').child(teacher_id).child('UID').get().val()
+    course_list = db.child('Teacher').child(teacher_id).child('Course_List').get().each()
+    if course_list != None:
+       for item in course_list:
+          class_list = db.child('Teacher').child(teacher_id).child('Course_List').child(item.key()).get().val()
+          if class_list != None:
+             for clss in class_list:
+                db.child('Class').child(item.key()).child(clss).remove()
     User.remove(user_id)
     db.child('Teacher').child(teacher_id).remove()
 
@@ -363,11 +370,23 @@ class Class():
     def remove(course_id, class_id):
         teacher_id  = db.child('Class').child(course_id).child(class_id).child('Teacher').child('ID').get().val()
         class_list = db.child('Teacher').child(teacher_id).child('Course_List').child(course_id).get().val()
+        student_class_list = db.child('Class').child(course_id).child(class_id).child('Student_list').get().val()
         if class_list != None:
             for item in class_list:
                if item == class_id:
                   class_list.remove(item)
                   break
+        if student_class_list != None:
+           for student in student_class_list:
+              class_student_list = db.child('Student').child(student).child('Class_list').get().val()
+              if class_student_list != None:
+                 for item in class_student_list:
+                    if item['Course'] == course_id and item['Class'] == class_id:
+                       class_student_list.remove(item)
+                       db.child('Student').child(student).update({
+                          'Class_list':class_student_list
+                       })
+                       break
         db.child('Teacher').child(teacher_id).child('Course_List').update({
             'Course_List':class_list
         })
@@ -514,7 +533,3 @@ class Content():
 class Message():
    def all():
       return db.child('Message').child('General').get().val()
-
-
-
-print(Student.remove(2211618))
