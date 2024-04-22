@@ -331,7 +331,7 @@ class Course():
         if  class_list != None:
            for item in class_list:
               Class.remove(course_id,item.key())
-        db.child('Course').child(course_id)
+        db.child('Course').child(course_id).remove()
     def getCourse(course_id):
         return db.child('Course').child(course_id).get().val()
 
@@ -391,7 +391,7 @@ class Class():
                        })
                        break
         db.child('Teacher').child(teacher_id).child('Course_List').update({
-            'Course_List':class_list
+            course_id:class_list
         })
         db.child('Class').child(course_id).child(class_id).remove()
     def get_class(course_id, class_id):
@@ -536,3 +536,6 @@ class Content():
 class Message():
    def all():
       return db.child('Message').child('General').get().val()
+
+
+Class.remove('CO2008','L01')
