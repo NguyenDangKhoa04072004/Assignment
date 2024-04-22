@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from datetime import datetime
 from django.urls import reverse
-from Database import Student, Teacher, Course, Class, Major
+from database import Student, Teacher, Course, Class, Major
 from datetime import datetime
 def login_required(func):
   def wrapper(request, *args, **kwargs):
@@ -53,12 +53,14 @@ def editstd(request,id):
   })
 def doEditStd(request,id):
     if request.method == 'POST':
+      date = datetime.strptime(request.POST['date'],'%Y-%m-%d')
+      format_date = date.strftime("%d/%m/%Y")
       Student.update(
         id,
         request.POST['name'],
         request.POST['email'],
         request.POST['major'],
-        request.POST['date'],
+        format_date,
         request.POST['year']
       )
       return HttpResponseRedirect(reverse(student_view))
@@ -108,7 +110,7 @@ def doAddTeacher(request):
           request.POST['email'],
           request.POST['level'],
           request.POST['field'],
-        request.POST['password']
+          request.POST['password']
       ) 
       if message == None:
         return HttpResponseRedirect(reverse(teacher_view))

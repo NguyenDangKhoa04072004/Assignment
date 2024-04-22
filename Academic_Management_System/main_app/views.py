@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse
-from Database import User, Student, Teacher, Message
+from database import User, Student, Teacher, Message
 # Create your views here.
 def logout_required(func):
   def wrapper(request,*args,**kwargs):

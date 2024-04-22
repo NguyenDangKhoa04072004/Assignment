@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse
-from Database import Student, Course, Class, Content
+from database import Student, Course, Class, Content
 
 def login_required(func):
   def wrapper(request, *args, **kwargs):

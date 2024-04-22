@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-import { getDatabase , ref , push , update , onValue , get, set} from 
+import { getDatabase , ref , push , update , onValue , get, set, off} from 
 "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCU44Hm0uhjR3EP98CcLGuJey3WAvo9bAo",
@@ -30,17 +30,21 @@ fetch("/check_id")
       onValue(message, function(snapshot){
         if(snapshot.exists()){
           console.log("New Data")
+          MenuSideBar.innerHTML = ""
           let array = snapshot.val()
         for(let i = array.length -1 ; i >= 0  ; i-- ){
           let mess = array[i]
           console.log(mess)
           addMessage(mess['Name'],mess['Title'],mess['Content'],mess['Date'])
+  
         }
         }else{
+           MenuSideBar.innerHTML = ""
            MenuSideBar.innerHTML += `<h3 style="text-align: center;"> Hiện tại không có thông báo nào</h3>`
         }
+    
       })
-
+    // window.location.reload()
     const submitButton = document.querySelectorAll('#notiInfo')
     submitButton.forEach( item => {
       const button = item.querySelector('button');
@@ -187,7 +191,7 @@ function addMessage(name,title,content,date){
       <div>
           <div class="messageInfo">
               <div style = "width: 150px; text-align: center;" ><h6>${name}</h6></div>
-              <div>${content.substring(0,20)+" ....."}</div>
+              <div>${content.substring(0,10)+" ....."}</div>
           </div>
       </div>
       <div class="datetime">

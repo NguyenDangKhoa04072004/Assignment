@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse
-from Database import Teacher, Class, Course, Class, Content
+from database import Teacher, Class, Course, Class, Content
 def login_required(func):
     def wrapper(request, *args, **kwargs):
       if 'teacher_id' not in request.session or ("login" not in request.session or request.session["login"] == False):
@@ -45,6 +45,7 @@ def notiList(request,course_id, class_id):
           'class':Class.get_class(course_id,class_id)
      })
 def studentList(request, course_id, class_id):
+     print(Class.get_studentList(course_id,class_id))
      return render(request,'Teacher/studentList.html',{
           'student_list':Class.get_studentList(course_id,class_id),
           'Course':course_id,

@@ -120,9 +120,23 @@ class Student():
     db.child('User').child(user_id).update({'email':new_email})
     
   def remove(student_id):
-    user_id = db.child('Student').child(student_id).child('UID').get().val()
-    User.remove(user_id)
-    db.child('Student').child(student_id).remove()
+   user_id = db.child('Student').child(student_id).child('UID').get().val()
+   class_list = db.child('Student').child(student_id).child('Class_list').get().val()
+   if class_list != None:
+      for item in class_list:
+         student_list = db.child('Class').child(item['Course']).child(item['Class']).child('Student_list').get().val()
+         if student_list != None:
+            for student in student_list:
+               if student == str(student_id):
+                  student_list.remove(student)
+                  db.child('Class').child(item['Course']).child(item['Class']).update({
+                     'Student_list':student_list,
+                     'Count':len(student_list)
+                  })
+                  break
+   User.remove(user_id)
+   db.child('Student').child(student_id).remove()
+   db.child('Grade').child(student_id).remove()
   def register_course(student_id, course_id, class_id):
      course = db.child('Student').child(student_id).child('Class_list').child(course_id).get().val()
      student = db.child('Class').child(course_id).child(class_id).child('Student_list').child(student_id).get().val()
@@ -272,7 +286,7 @@ class Teacher():
         'Assignment_Grade':Assignment,
         'MidTerm_Grade':Midterm,
         'FinalTerm_Grade':FinalTerm,
-        'Final_Grade': FinalGrade,
+        'Final_Grade': round(FinalGrade,1)
      })
      Grade.gpa(student_id)
 
@@ -401,13 +415,18 @@ class Grade():
       Result = db.child('Grade').child(student_id).get().each()
       if Result != None:
          Credits = 0
+         Fail = 0
          Gpa = 0.0
          for item in Result:
-            if item.val()['Final_Grade'] > 4.0 and item.val()['Final_Grade'] != 'CB':
+            if item.val()['Final_Grade'] >= 4.0 and item.val()['Final_Grade'] != 'CB':
                Credits +=int(db.child('Course').child(item.key()).child('Credits').get().val())
                Gpa += float(item.val()['Final_Grade']) * float(db.child('Course').child(item.key()).child('Credits').get().val())
+            else:
+               Credits +=int(db.child('Course').child(item.key()).child('Credits').get().val())
+               Fail+=int(db.child('Course').child(item.key()).child('Credits').get().val())
+               Gpa += float(item.val()['Final_Grade']) * float(db.child('Course').child(item.key()).child('Credits').get().val())
          db.child('Student').child(student_id).update({
-            'Credits':Credits,
+            'Credits':Credits-Fail,
             'GPA':round((Gpa/Credits),1)
          })
 
@@ -498,5 +517,4 @@ class Message():
 
 
 
-
-print(Student.get_course(2211618))
+print(Student.remove(2211618))

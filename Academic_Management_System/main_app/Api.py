@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from Database import Student, Teacher
+from database import Student, Teacher
 def check_id(request):
   if 'teacher_id' in request.session:
     return JsonResponse({'Type':'Teacher' , 'ID':request.session['teacher_id'], 'Name':Teacher.get_teacher(request.session['teacher_id'])['Name']},)
